@@ -32,9 +32,10 @@ Please refer to the following list to select the correct manifest file:
 
 |Manifest file | Description |
 |--------------|---------------------------|
+|**yocto-x86-genericx86-64.xml**|Any x86 based plattform supporting UEFI
 |**yocto-arm32-raspberrypi2.xml**|Raspberry Pi2
 |**yocto-arm64-raspberrypi3-64.xml**|Raspberry Pi3
-|**yocto-x86-genericx86-64.xml**|Any x86 based plattform supporting UEFI
+|**yocto-arm64-tqma8mpxl-mba8mpxl.xml**|TQ-Systems TQMa8MPxL on MBa8MPxL SBC
 
 ```
 repo init -u https://github.com/gyroidos/gyroidos.git -b kirkstone -m <manifest file>
@@ -51,11 +52,14 @@ The following architectures and devices are supported currently:
 |x86| genericx86-64|
 |arm32|raspberrypi2|
 |arm64|raspberrypi3|
+|arm64|tqma8mpxl|
 
 ```
 source init_ws.sh out-yocto <architecture> <machine>
 ```
 > This automatically switches to out-yocto
+
+> **Note**: In order to build images for Freescale/NXP based SoCs (e.g. TQMa8MPxL), you need to accept the Freescale EULA by placing the line `ACCEPT_FSL_EULA = "1"` in `out-yocto/conf/local.conf`.
 
 ## Optional: Use own PKI
 If you want to use your own PKI, place the necessary files into the directory `ws-yocto/out-yocto/test_certificates`.
