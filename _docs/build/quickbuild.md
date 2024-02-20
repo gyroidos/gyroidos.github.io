@@ -58,15 +58,15 @@ bitbake multiconfig:container:trustx-core
 bitbake trustx-cml
 ```
 
-## Raspberry Pi2
+## TQ-Systems TQMa8MPxL
 
 ```
 mkdir ws-yocto
 cd ws-yocto
 repo init -u https://github.com/gyroidos/gyroidos.git -b kirkstone \
-     -m yocto-arm32-raspberrypi2.xml
+     -m yocto-arm64-tqma8mpxl-mba8mpxl.xml
 repo sync -j8
-source init_ws.sh out-yocto arm32 raspberrypi2
+source init_ws.sh out-yocto arm64 tqma8mpxl
 bitbake multiconfig:container:trustx-core
 bitbake trustx-cml
 ```
