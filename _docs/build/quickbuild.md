@@ -67,6 +67,7 @@ repo init -u https://github.com/gyroidos/gyroidos.git -b kirkstone \
      -m yocto-arm64-tqma8mpxl-mba8mpxl.xml
 repo sync -j8
 source init_ws.sh out-yocto arm64 tqma8mpxl
+echo 'ACCEPT_FSL_EULA = "1"' >> conf/local.conf
 bitbake multiconfig:container:trustx-core
 bitbake trustx-cml
 ```
