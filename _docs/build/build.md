@@ -129,6 +129,12 @@ bitbake trustx-keytool
 
 
 # Build FAQ
+## Where is the image saved to
+> x86 UEFI specific
+
+The image is saved to `ws-yocto/out-yocto/tmp/deploy/images/genericx86-64/trustx-cml-genericx86-64-${date}.rootfs.wic`,
+where `${date}` is the build date, e.g. `20241018122338`.
+
 ## How to change kernel config
 #### Temporarily
 ```
