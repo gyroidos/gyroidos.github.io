@@ -1,5 +1,5 @@
 ---
-title: Remote attestation (rattestation)
+title: Remote attestation
 category: Operate
 order: 7
 ---
