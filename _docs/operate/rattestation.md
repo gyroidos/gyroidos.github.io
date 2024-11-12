@@ -20,7 +20,7 @@ In the following, we detail how to attest GyroidOS running in a QEMU VM.
 The attestation tool cannot connect to the Container Management Layer (CML) when using a QEMU bridge.
 Thus, we use a TAP network.
 
-```bash
+```
 # Create a new tap
 $ ip tuntap add dev "gyroidOS_tap" mode tap
 # Start it
@@ -43,7 +43,7 @@ Detailed instructions are available [in the deploy/qemu section](../deploy/qemu#
 Install the required packages and create a container following [the QEMU setup instructions](../deploy/qemu).
 Afterward, start QEMU with the following command.
 
-```bash
+```
 qemu-system-x86_64 \
     --enable-kvm -m 4096 \
     -bios /usr/share/ovmf/OVMF.fd \
@@ -67,7 +67,7 @@ Access the CML terminal in the QEMU window, not the terminal used to launch QEMU
 Log in with the username `root`, no password is required.
 Confirm that you are in the correct terminal by running `hostname`, which should return `trustx-core`.
 
-```bash
+```
 # Since we don't use a DHCP server on the TAP, we have to manually assign an IP address
 ip addr add 172.23.0.55/24 dev cmleth0
 # Add route to TAP in case that it wasn't automatically created
