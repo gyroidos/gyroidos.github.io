@@ -17,7 +17,7 @@ In the following, we detail how to attest GyroidOS running in a QEMU VM.
 
 ## Network Configuration
 
-The attestation tool cannot connect to the Container Management Layer (CML) when using a QEMU bride.
+The attestation tool cannot connect to the Container Management Layer (CML) when using a QEMU bridge.
 Thus, we use a TAP network.
 
 ```bash
