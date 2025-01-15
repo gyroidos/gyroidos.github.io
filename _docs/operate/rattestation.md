@@ -35,12 +35,12 @@ $ ip route add 172.23.0.1 via 172.23.0.2
 
 ## Software TPM Setup
 
-As previously mentioned, the attestation requires a TMP module, which we will emulate using a software TMP.
-Detailed instructions are available [in the deploy/qemu section](../deploy/qemu#use-tpm-emulation).
+As previously mentioned, the attestation requires a TPM module, which we will emulate using a software TPM.
+Detailed instructions are available [in the deploy/qemu section](/deploy/qemu#use-tpm-emulation).
 
 ## QEMU
 
-Install the required packages and create a container following [the QEMU setup instructions](../deploy/qemu).
+Install the required packages and create a container following [the QEMU setup instructions](/deploy/qemu).
 Afterward, start QEMU with the following command.
 
 ```
