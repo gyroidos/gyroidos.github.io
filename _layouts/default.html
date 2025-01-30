@@ -74,7 +74,7 @@
 				<input type="submit" value="Search" style="display: none;">
 			</form>
 
-			<nav {% if site.show_full_navigation %}class="full-navigation"{% endif %}>
+			<nav {% if site.show_full_navigation %}class="full-navigation"{% endif %} style="max-height: calc(80vh - 80px); overflow-y: auto; overflow-x: hidden">
 				<ul>
 					<li class="nav-item top-level {% if page.url == '/' %}current{% endif %}">
 						{% assign home = site.html_pages | where: 'url', '/' | first %}
@@ -96,7 +96,6 @@
 						</li>
 					{% endfor %}
 				</ul>
-
 			</nav>
 		</header>
 	</body>
