@@ -333,16 +333,13 @@ nav > ul {
     display: block;
     z-index: 10;
 
-    
-    @media (min-width: $mobile-break) and (max-height: $vertical-break) {
-         & > ul {
-            display: none;
-            }
-        
-         &.current > ul{
-            display: block;
-        }
-    }
+	& > ul {
+		display: none;
+	}
+
+	&.current > ul{
+		display: block;
+	}
 
     
 
