@@ -20,32 +20,33 @@
 				ga('send', 'pageview');
 			</script>
 		{% endif %}
-    <div class ="logo">
-        <a href="{{ site.baseurl }}/">
-            <img src="{{ site.baseurl }}/img/gyroidos-logo.svg" width="90" height="90" alt="{{ site.title }} logo">
-        </a>
-        <nav style="white-space:pre"> {{ site.title }}</nav>
-    </div>
-
-    <div class="filler"></div>
-    <div class="download1">
-        <a href="{{site.githuborg}}/{{site.repository}}/releases/tag/{{site.release_tag}}">
-            <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" height="40" width="40" class="octicon octicon-package UnderlineNav-octicon">
-    <path fill-rule="evenodd" d="M8.878.392a1.75 1.75 0 00-1.756 0l-5.25 3.045A1.75 1.75 0 001 4.951v6.098c0 .624.332 1.2.872 1.514l5.25 3.045a1.75 1.75 0 001.756 0l5.25-3.045c.54-.313.872-.89.872-1.514V4.951c0-.624-.332-1.2-.872-1.514L8.878.392zM7.875 1.69a.25.25 0 01.25 0l4.63 2.685L8 7.133 3.245 4.375l4.63-2.685zM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432L2.5 5.677zm6.25 8.271l4.625-2.683a.25.25 0 00.125-.216V5.677L8.75 8.432v5.516z"></path>
-</svg>
-
-            <p>Download <strong>Release</strong></p>
-        </a>
-    </div>
-    <div class="download2">
-        <a href="{{site.githuborg}}/"><img src="{{ site.baseurl }}/img/GitHub-Mark-64px.png" width="40" height="40"</strong>
-        <p>View On <strong>Github</strong></p>
-        </a>
-    </div>
-
 	</head>
 	<body>
 		<header>
+			<div class ="logo">
+				<a href="{{ site.baseurl }}/">
+					<img src="{{ site.baseurl }}/img/gyroidos-logo.svg" width="90" height="90" alt="{{ site.title }} logo">
+				</a>
+				<nav style="white-space:pre"> {{ site.title }}</nav>
+			</div>
+
+			<div class="filler"></div>
+			<div class="download1">
+				<a href="{{site.githuborg}}/{{site.repository}}/releases/tag/{{site.release_tag}}">
+					<svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" height="40" width="40" class="octicon octicon-package UnderlineNav-octicon">
+						<path fill-rule="evenodd" d="M8.878.392a1.75 1.75 0 00-1.756 0l-5.25 3.045A1.75 1.75 0 001 4.951v6.098c0 .624.332 1.2.872 1.514l5.25 3.045a1.75 1.75 0 001.756 0l5.25-3.045c.54-.313.872-.89.872-1.514V4.951c0-.624-.332-1.2-.872-1.514L8.878.392zM7.875 1.69a.25.25 0 01.25 0l4.63 2.685L8 7.133 3.245 4.375l4.63-2.685zM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432L2.5 5.677zm6.25 8.271l4.625-2.683a.25.25 0 00.125-.216V5.677L8.75 8.432v5.516z"></path>
+					</svg>
+
+					<p>Download <strong>Release</strong></p>
+				</a>
+			</div>
+			<div class="download2">
+				<a href="{{site.githuborg}}/">
+					<img src="{{ site.baseurl }}/img/GitHub-Mark-64px.png" width="40" height="40">
+					<p>View On <strong>Github</strong></p>
+				</a>
+			</div>
+
 			<h1>
                 <div class= "mobilelogo">
                     <a href="{{ site.baseurl }}/">
