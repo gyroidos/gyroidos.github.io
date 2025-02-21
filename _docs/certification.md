@@ -15,7 +15,7 @@ As part of the trusted connector GyroidOS already got the IDS-ready label (Trust
 
 Remember that we only describe the features which are supported by the mainline implementation of GyroidOS
 (consisting of the container management layer daemon _cmld_, the smartcard and security helper daemon _scd_, the trusted platform module 2 helper daemon _tmp2d_)
-and the provided yocto based CML distribution, companioned by its reference c0 implementation trustx-coreos.
+and the provided yocto based CML distribution, companioned by its reference c0 implementation gyroidos-coreos.
 
 In a nutshell planned certifications are:
 

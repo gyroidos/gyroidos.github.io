@@ -65,7 +65,7 @@ qemu-system-x86_64 \
 The following commands must be run in the C0 container since all traffic is routed through C0 to the CML, which will complete the attestation request.
 Access the CML terminal in the QEMU window, not the terminal used to launch QEMU.
 Log in with the username `root`, no password is required.
-Confirm that you are in the correct terminal by running `hostname`, which should return `trustx-core`.
+Confirm that you are in the correct terminal by running `hostname`, which should return `gyroidos-core`.
 
 ```
 # Since we don't use a DHCP server on the TAP, we have to manually assign an IP address

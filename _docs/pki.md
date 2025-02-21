@@ -70,5 +70,5 @@ the build system directories, you will need to adapt the software artifact signi
 e.g., from HSMs.
 
 ```
-bash ws-yocto/trustme/build/device_provisioning/gen_dev_certs.sh
+bash ws-yocto/gyroidos/build/device_provisioning/gen_dev_certs.sh
 ```
