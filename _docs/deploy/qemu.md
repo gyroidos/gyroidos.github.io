@@ -36,7 +36,7 @@ Now the GyroidOS image can be booted as follows:
 kvm -m 4096 -bios OVMF.fd -serial mon:stdio \
     -device virtio-rng-pci \
     -device virtio-scsi-pci,id=scsi \
-    -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=tmp/deploy/images/genericx86-64/trustme_image/trustmeimage.img,format=raw \
+    -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=tmp/deploy/images/genericx86-64/gyroidos_image/gyroidosimage.img,format=raw \
     -device scsi-hd,drive=hd1 -drive if=none,id=hd1,file=containers.btrfs,format=raw
 ```
 
@@ -49,7 +49,7 @@ This section describes the process of running GyroidOS in KVM/QEMU connected to 
 
 
 ```
-cd ws-yocto/trustme/cml/tpm2d/swtpm-docker
+cd ws-yocto/gyroidos/cml/tpm2d/swtpm-docker
 docker build -t swtpm-docker .
 ```
 
@@ -69,7 +69,7 @@ The following example runs a GyroidOS image using the TPM emulator and enabling 
 kvm -m 4096 -bios OVMF.fd -serial mon:stdio \
     -device virtio-rng-pci \
     -device virtio-scsi-pci,id=scsi \
-    -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=tmp/deploy/images/genericx86-64/trustme_image/trustmeimage.img,format=raw \
+    -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=tmp/deploy/images/genericx86-64/gyroidos_image/gyroidosimage.img,format=raw \
     -device scsi-hd,drive=hd1 -drive if=none,id=hd1,file=containers.btrfs,format=raw \
     -net nic -net user,hostfwd=tcp::8181-:8181,hostfwd=tcp::2323-:22 \
     -chardev socket,id=chrtpm,path=/tmp/swtpmqemu/swtpm-sock \
@@ -97,7 +97,7 @@ kvm -m 4096 -serial mon:stdio \
     -device virtio-scsi-pci,id=scsi \
     -drive if=pflash,format=qcow2,readonly,file=out-yocto/tmp/deploy/images/genericx86-64/ovmf.secboot.qcow2 \
     -drive if=pflash,format=qcow2,file=out-yocto/tmp/deploy/images/genericx86-64/ovmf.vars.qcow2 \
-    -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=tmp/deploy/images/genericx86-64/trustme_image/keytoolimage.img,format=raw
+    -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=tmp/deploy/images/genericx86-64/gyroidos_image/keytoolimage.img,format=raw
 ```
 The KeyTool will be launched.
 It should say:
@@ -134,7 +134,7 @@ kvm -m 4096 -serial mon:stdio \
     -device virtio-scsi-pci,id=scsi \
     -drive if=pflash,format=qcow2,readonly,file=tmp/deploy/images/genericx86-64/ovmf.secboot.code.qcow2 \
     -drive if=pflash,format=qcow2,file=tmp/deploy/images/genericx86-64/ovmf.vars.qcow2 \
-    -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=tmp/deploy/images/genericx86-64/trustme_image/trustmeimage.img,format=raw \
+    -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=tmp/deploy/images/genericx86-64/gyroidos_image/gyroidosimage.img,format=raw \
     -device scsi-hd,drive=hd1 -drive if=none,id=hd1,file=containers.btrfs,format=raw \
     -net nic -net user,hostfwd=tcp::8181-:8181,hostfwd=tcp::2323-:22 \
 ```

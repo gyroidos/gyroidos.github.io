@@ -21,7 +21,7 @@ In order to achieve that, we use the setup mode for running a container instance
 
  You can verify that debos is installed by:
 ```
-root@trustx-core:~# control list_guestos | grep debos
+root@gyroidos-core:~# control list_guestos | grep debos
      name: "debos"
 ```
 
@@ -91,7 +91,7 @@ control start debian1 --key=trustme
   You can verify this by checking:
 
     ```
-    root@trustx-cml:~# control list_guestos | grep docker-convertos
+    root@cml:~# control list_guestos | grep docker-convertos
     name: "docker-convertos"
     ```
 * configured internet access in core0 (default is dhcp on eth0)

@@ -62,7 +62,7 @@ optional string build_date // build date
 
 optional string	update_base_url // provide url to file server which hosts the actual image data (overwrites device.conf)
 ```
-The original Protobuf formatted file can be found [here](https://github.com/trustm3/device_fraunhofer_common_cml/blob/trustx-master/daemon/guestos.proto).
+The original Protobuf formatted file can be found [here](https://github.com/gyroidos/cml/blob/main/daemon/guestos.proto).
 
 
 ### Parameter mounts

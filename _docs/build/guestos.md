@@ -40,15 +40,15 @@ Currently supported architectures are: *x86*, *arm32*, and *arm64*.
 
 ### Create the image recipe
 
-Each guest operating system image has a corresponding Yocto recipe file, *<custom-image-name>.bb*. The GyroidOS *meta-trustx* layer provides two standard image recipes:
+Each guest operating system image has a corresponding Yocto recipe file, *<custom-image-name>.bb*. The GyroidOS *meta-gyroidos* layer provides two standard image recipes:
 
-* A core container image recipe, *\<yocto workspace directory\>/meta-trustx/images/trustx-core.bb*
-* A service container image recipe, *\<yocto workspace directory\>/meta-trustx/images/trustx-service.bb*
+* A core container image recipe, *\<yocto workspace directory\>/meta-gyroidos/images/gyroidos-core.bb*
+* A service container image recipe, *\<yocto workspace directory\>/meta-gyroidos/images/gyroidos-service.bb*
 
 To create a custom image you can either modify the existing image recipes or create your own ones in your meta-layer, using the provided recipes as templates. For the most cases the latter option is recommended. To use the existing recipe as a template for your own, just copy the recipe file to the target meta layer and rename it, e.g.:
 
 ```
-cp <yocto workspace directory>/meta-trustx/images/trustx-core.bb <yocto workspace directory>/<target-meta-layer>/images/<custom-image-name>.bb
+cp <yocto workspace directory>/meta-gyroidos/images/gyroidos-core.bb <yocto workspace directory>/<target-meta-layer>/images/<custom-image-name>.bb
 ```
 
 ### (Optional) Create custom guest OS and container configs
@@ -70,15 +70,15 @@ At this point the new guest OS is ready for build and you can customize by addin
 You can build the image by calling the corresponding bitbake command:
 
 ```
-bitbake multiconfig:container:trustx-<custom-image-name>
+bitbake multiconfig:container:gyroidos-<custom-image-name>
 ```
 
-The image and configuration files will be located at *tmp_container/deploy/images/<architecture>/trustx-guests/* and *tmp_container/deploy/images/<architecture>/trustx-configs/container/*
+The image and configuration files will be located at *tmp_container/deploy/images/<architecture>/gyroidos-guests/* and *tmp_container/deploy/images/<architecture>/gyroidos-configs/container/*
 
 If you are also building the core system from source, in order to include the new guest OS to your GyroidOS distro, also rebuild the core system image:
 ```
-bitbake trustx-cml -cclean
-bitbake trustx-cml
+bitbake gyroidos-cml -cclean
+bitbake gyroidos-cml
 ```
 
 Now you can use the new guest OS when creating containers as described [here](/operate/control).
@@ -86,9 +86,9 @@ Now you can use the new guest OS when creating containers as described [here](/o
 ## Manually / Using a pre-built docker image
 Prerequisites:
 * The software signing certificate and key. If you use the auto-generated PKI the files needed are 'ssig.key' and 'ssig.cert'
-* The signing scripts located at <yocto workspace directory>/trustme/build/device_provisioning/oss_enrollment/config_creator/
+* The signing scripts located at <yocto workspace directory>/gyroidos/build/device_provisioning/oss_enrollment/config_creator/
 * A root file system image, in the following called root.img (e.g. created using docker build + docker export)
-* An example guest OS config, for example the config located at "\<yocto workspace directory\>/trustme/build/config_overlay/x86/trustx-coreos.conf" (see [GuestOS configuration](/operate/guestos_config))
+* An example guest OS config, for example the config located at "\<yocto workspace directory\>/gyroidos/build/config_overlay/x86/gyroidos-coreos.conf" (see [GuestOS configuration](/operate/guestos_config))
 
 
 Steps to manually create a guest OS
@@ -102,8 +102,8 @@ Steps to manually create a guest OS
 ```
 ./sign_config.sh <guest OS config> ssig.key ssig.cert
 ```
-3. Copy the created files to to /data/cml/operatingsystems, e.g. the files trustx-customos-1.conf, trustx-customos-1.cert and trustx-customos-1.sig
-4. Create a directory for your guest OS root.img, e.g. /data/cml/operatingsystems/trustx-customos-1
+3. Copy the created files to to /data/cml/operatingsystems, e.g. the files gyroidos-customos-1.conf, gyroidos-customos-1.cert and gyroidos-customos-1.sig
+4. Create a directory for your guest OS root.img, e.g. /data/cml/operatingsystems/gyroidos-customos-1
 5. Copy your root.img to the newly created directory
 6. Create a new container using your guest OS as described [Basic operation](/operate/control)
 

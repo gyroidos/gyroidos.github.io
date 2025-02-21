@@ -82,7 +82,7 @@ Experienced users may choose to include all containers. However this will requir
 
 Build and include the minimal core container
 ```
-bitbake multiconfig:container:trustx-core
+bitbake multiconfig:container:gyroidos-core
 ```
 
 Build and include the IDS Trusted Connector container
@@ -107,14 +107,14 @@ This step builds all necessary packages needed for GyroidOS and generates a boot
 In order to do so, please refer to the [Deploy section](/deploy/x86)
 
 ```
-bitbake trustx-cml
+bitbake gyroidos-cml
 ```
 ## Build installer image
 If required, a bootable installer image can be created. This image can be used to boot the target platform and install GyroidOS on the internal disk as described in the [Deploy section](/deploy/x86)
 > Currently, the installer medium is only available for x86 platforms
 
 ```
-bitbake multiconfig:installer:trustx-installer
+bitbake multiconfig:installer:gyroidos-installer
 ```
 
 
@@ -124,7 +124,7 @@ bitbake multiconfig:installer:trustx-installer
 Create a bootable image containing the KeyTool and the GyroidOS secure boot keys.
 This image can be used to configure secure boot on your platform as described in section [Deploy](/deploy/x86).
 ```
-bitbake trustx-keytool
+bitbake gyroidos-keytool
 ```
 
 
@@ -140,12 +140,12 @@ where `${date}` is the build date, e.g. `20241018122338`.
 ```
 bitbake -f -c menuconfig virtual/kernel
 bitbake -f virtual/kernel
-bitbake -f trustx-cml-initramfs
+bitbake -f gyroidos-cml-initramfs
 ```
 
 #### Persistently
 The GyroidOS build system applies some kernel config fragments to the defconfig of your chosen ARCH by default.
-After setting up the yocto environment the fragments are located in subdirectories of ```<ws>/trustme/build/yocto/```.
+After setting up the yocto environment the fragments are located in subdirectories of ```<ws>/gyroidos/build/yocto/```.
 
 The following subdirectories contain the actual fragments which are applied in the same order as they are listed below:
 * generic/fragments

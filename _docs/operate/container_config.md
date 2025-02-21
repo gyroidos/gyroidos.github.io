@@ -78,7 +78,7 @@ optional bool usb_pin_entry [ default = false ];
 }
 ```
 
-The full-blown protocol specification can be found [here](https://github.com/trustm3/device_fraunhofer_common_cml/blob/trustx-master/daemon/container.proto) as protobuf-text formatted file.
+The full-blown protocol specification can be found [here](https://github.com/gyroidos/cml/blob/main/daemon/container.proto) as protobuf-text formatted file.
 
 
 ### Parameter image_sizes

@@ -17,13 +17,15 @@ This section describes how to deploy GyroidOS on Raspberry Pi platforms.
 ## Create bootable medium
 
 ### Requirements
-* A successfully built GyroidOS image file (trustmeimage.img), either downloaded from [Github Release]({{site.githuborg}}/{{site.repository}}/releases/tag/{{site.release_tag}}) or built following the instructions [here]({{ "/" | abolute_url }}build/build#build-gyroidos-image).
-* The script **copy_image_to_disk_mbr.sh** which can be found [on GitHub](https://github.com/trustm3/trustme_build/raw/master/yocto/copy_image_to_disk_mbr.sh) or in your build folder at `trustme/build/yocto/copy_image_to_disk.sh`
+* A successfully built GyroidOS image file (gyroidosimage.img), either downloaded from [Github Release]({{site.githuborg}}/{{site.repository}}/releases/tag/{{site.release_tag}}) or built following the instructions [here]({{ "/" | abolute_url }}build/build#build-gyroidos-image).
+* The script **copy_image_to_disk_mbr.sh** which can be found [on GitHub](https://github.com/gyroidos/gyroidos/raw/main/yocto/copy_image_to_disk_mbr.sh) or in your build folder at `gyroidos/build/yocto/copy_image_to_disk_mbr.sh`
 * A MicroSD card compatible with your board
+* Optional: Bmap file `gyroidosimage.img.bmap` which is automatically created by the build system and deployed next to `gyroidosimage.img`. This enables flashing using [bmaptool](https://manpages.debian.org/testing/bmap-tools/bmaptool.1.en.html).
+
 
 First, ensure the needed packages are installed on your system.
 ```
-apt-get install util-linux btrfs-progs sgdisk parted
+apt-get install util-linux btrfs-progs sgdisk parted bmap-tools
 ```
 
 ### Copy GyroidOS image to disk
@@ -40,14 +42,28 @@ If you have built from source in `ws-yocto` and your target device is `/dev/mmcb
 ```
 cd ws-yocto # your yocto workspace directory
 sudo copy_image_to_disk_mbr.sh \
-	out-yocto/tmp/deploy/images/raspberrypi2/trustme_image/trustmeimage.img \
+	out-yocto/tmp/deploy/images/raspberrypi2/gyroidos_image/gyroidosimage.img \
 	/dev/mmcblk0
 ```
 - **Raspberry Pi3**
 ```
 cd ws-yocto # your yocto workspace directory
 sudo copy_image_to_disk_mbr.sh \
-	out-yocto/tmp/deploy/images/raspberrypi3-64/trustme_image/trustmeimage.img \
+	out-yocto/tmp/deploy/images/raspberrypi3-64/gyroidos_image/gyroidosimage.img \
+	/dev/mmcblk0
+```
+- **Raspberry Pi4**
+```
+cd ws-yocto # your yocto workspace directory
+sudo copy_image_to_disk_mbr.sh \
+	out-yocto/tmp/deploy/images/raspberrypi4-64/gyroidos_image/gyroidosimage.img \
+	/dev/mmcblk0
+```
+- **Raspberry Pi5**
+```
+cd ws-yocto # your yocto workspace directory
+sudo copy_image_to_disk_mbr.sh \
+	out-yocto/tmp/deploy/images/raspberrypi5/gyroidos_image/gyroidosimage.img \
 	/dev/mmcblk0
 ```
 

@@ -51,7 +51,7 @@ $ qemu-system-x86_64 -enable-kvm -m 4096 -serial mon:stdio \
     -bios OVMF.fd \
     -device virtio-rng-pci \
     -device virtio-scsi-pci,id=scsi \
-    -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=ws-yocto/out-yocto/tmp/deploy/images/genericx86-64/trustme_image/trustmeimage.img,format=raw \
+    -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=ws-yocto/out-yocto/tmp/deploy/images/genericx86-64/gyroidos_image/gyroidosimage.img,format=raw \
     -device scsi-hd,drive=hd1 -drive if=none,id=hd1,file=containers.ext4,format=raw \
     -nic user,hostfwd=tcp::2222-:2222
 ```

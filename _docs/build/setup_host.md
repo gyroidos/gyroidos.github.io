@@ -9,7 +9,7 @@ order: 2
 {:toc}
 
 This page describes how to setup the build environment for the GyroidOS system.
-The instructions were tested on Debian Stretch (x86-64).
+The instructions were tested on Debian Bookworm (x86-64).
 You can either build GyroidOS natively on your host or use a preconfigured, Docker-based build environment.
 Choose the option that best fits your requirements.
 
@@ -23,18 +23,18 @@ sudo apt-get install repo
 ```
 mkdir ~/ws-yocto
 cd ~/ws-yocto
-repo init -u https://github.com/gyroidos/gyroidos.git -b kirkstone -m <manifest file>.xml
+repo init -u https://github.com/gyroidos/gyroidos.git -b main -m <manifest file>.xml
 repo sync -j8
 ```
 3. Build Docker image
 ```
-cd ~/ws-yocto/trustme/build/yocto/docker
-docker build -t trustx-builder .
+cd ~/ws-yocto/gyroidos/build/yocto/docker
+docker build -t gyroidos-builder .
 ```
 4. Start Docker
 Please ensure you are logged in as a non-root user. Otherwise, bitbake will refuse to run. A tutorial on how to run docker as a normal user can be found [here](https://docs.docker.com/install/linux/linux-postinstall/)
 ```
-cd ~/ws-yocto/trustme/build/yocto/docker
+cd ~/ws-yocto/gyroidos/build/yocto/docker
 ./run-docker.sh ~/ws-yocto
 ```
 5. Follow build instruction from [Setup Yocto environment](/build/build#setup-yocto-environment) inside the Docker container
@@ -45,17 +45,19 @@ cd ~/ws-yocto/trustme/build/yocto/docker
 The GyroidOS build needs packages from main and contrib archive areas. If not already done so, enable contrib in your sources.list.
 
 1. To setup your build host, install the following packages required for Yocto/Poky (see
-[Yocto reference manual](https://www.yoctoproject.org/docs/2.6.2/ref-manual/ref-manual.html#required-packages-for-the-build-host))
+[Yocto reference manual](https://docs.yoctoproject.org/kirkstone/ref-manual/system-requirements.html#required-packages-for-the-build-host))
 ```
-apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \
-     build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
-     xz-utils debianutils iputils-ping
+apt-get install build-essential chrpath cpio debianutils diffstat file \
+     gawk gcc git iputils-ping libacl1 liblz4-tool locales python3 \
+     python3-git python3-jinja2 python3-pexpect python3-pip \
+     python3-subunit socat texinfo unzip wget xz-utils zstd
 ```
 2. Install additional required packages for repo tool and image signing
 ```
-apt-get install repo python-protobuf python3-protobuf
+apt-get install repo python3-protobuf
 ```
 
+<!--
 ### IDS trusted connector specific requirements (optionally)
 Install the following software packages for a Yarn-based
 build of the [Trusted Connector](/index#use-cases) core compartment.
@@ -79,3 +81,4 @@ echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list
 apt-get update
 apt-get install yarn
 ```
+-->

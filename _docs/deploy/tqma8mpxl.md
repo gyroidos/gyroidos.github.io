@@ -17,10 +17,10 @@ Build the GyroidOS image according to the instructions [here]({{ "/" | abolute_u
 
 ## Create bootable medium
 ### Requirements
-* A successfully built GyroidOS image file `trustmeimage.img`.
-* The script **copy_image_to_disk_mbr.sh** which can be found [on GitHub](https://github.com/gyroidos/gyroidos/raw/master/yocto/copy_image_to_disk_mbr.sh) or in your build folder at `trustme/build/yocto/copy_image_to_disk.sh`
+* A successfully built GyroidOS image file `gyroidosimage.img`.
+* The script **copy_image_to_disk_mbr.sh** which can be found [on GitHub](https://github.com/gyroidos/gyroidos/raw/main/yocto/copy_image_to_disk_mbr.sh) or in your build folder at `gyroidos/build/yocto/copy_image_to_disk.sh`
 * A MicroSD card compatible with your board
-* Optional: Bmap file `trustmeimage.img.bmap` which is automatically created by the build system and deployed next to `trustmeimage.img`. This enables flashing using [bmaptool](https://manpages.debian.org/testing/bmap-tools/bmaptool.1.en.html).
+* Optional: Bmap file `gyroidosimage.img.bmap` which is automatically created by the build system and deployed next to `gyroidosimage.img`. This enables flashing using [bmaptool](https://manpages.debian.org/testing/bmap-tools/bmaptool.1.en.html).
 
 First, ensure the needed packages are installed on your system.
 ```
@@ -40,11 +40,11 @@ If you have built from source in `ws-yocto` and your target device is `/dev/mmcb
 ```
 cd ws-yocto # your yocto workspace directory
 sudo copy_image_to_disk_mbr.sh \
-	out-yocto/tmp/deploy/images/tqma8mpxl-mba8mpxl/trustme_image/trustmeimage.img \
+	out-yocto/tmp/deploy/images/tqma8mpxl-mba8mpxl/gyroidos_image/gyroidosimage.img \
 	/dev/mmcblk0
 ```
 
-In this example, if the bmap file `out-yocto/tmp/deploy/images/tqma8mpxl-mba8mpxl/trustme_image/trustmeimage.img.bmap`
+In this example, if the bmap file `out-yocto/tmp/deploy/images/tqma8mpxl-mba8mpxl/gyroidos_image/gyroidosimage.img.bmap`
 exists and bmaptool is installed, the script will automatically flash to the MicroSD card using the quick bmaptool.
 If one of these requirements is not fulfilled `copy_image_to_disk_mbr.sh` will fall back to slower copy using dd.
 
