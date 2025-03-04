@@ -12,7 +12,6 @@ This section describes how to run the hosted mode.
 These instructions have been tested and work on Debian 13 Trixi.
 
 ## Requirements
-> cml requires OpenSSL version >= 3.2
 
 Have a prebuilt container image ready or build one yourself as described in [Build](/build/build).
 
@@ -41,6 +40,9 @@ sudo ldconfig
 ## Installation
 
 ### CML
+
+> Requires OpenSSL version >= 3.2
+
 Clone, compile and install the neccesary components with
 ```
 git clone https://github.com/gyroidos/cml
