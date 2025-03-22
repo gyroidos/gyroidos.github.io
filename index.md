@@ -69,7 +69,8 @@ For more information on GyroidOS and OS-Level virtualization, [read our backgrou
 
 ## Use cases
 
-
+| Use case ||
+|---|---|
 | __Application separation.__ Similar to Docker GyroidOS can be used to separate applications in server environments, yet providing a full system inside a container closer to type 1 hypervisors such as Xen. | <img src="https://github.com/industrial-data-space/trusted-connector-documentation/raw/master/docs/assets/img/tux_logo.png" width="15%"> |
 | __IoT edge devices.__ Its stripped-down version -- just a kernel and a small ramdisk as virtualization layer -- targets embedded systems which can be used in the IoT context for edge devices. GyroidOS also provides the reference implementation for the so-called Trusted Connector in the International Data Space. The [International Data Spaces](http://www.internationaldataspaces.org) provides concepts for a generic, shared data cloud for the (industrial) Internet of Things | <img src="https://github.com/industrial-data-space/trusted-connector-documentation/raw/master/docs/assets/img/logo.png" width="15%">| 
 <!-- | __Smartphones.__ Due to its history, formerly designed for Smartphones, it could still run on those devices to provide a container execution environment for background containers. Nevertheless, it is also feasible to separate user containers with different security requirements.| <img src="https://github.com/industrial-data-space/trusted-connector-documentation/raw/master/docs/assets/img/android_logo.png" width="15%">|
