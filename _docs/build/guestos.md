@@ -26,7 +26,7 @@ In order to setup an environment for building guest operating systems only, foll
 * Initialize and synchronize the repo:
 
 ```
-repo init -u https://github.com/gyroidos/gyroidos.git -b kirkstone -m yocto-generic-container.xml
+repo init -u https://github.com/gyroidos/gyroidos.git -b main -m yocto-generic-container.xml
 repo sync -j8
 ```
 

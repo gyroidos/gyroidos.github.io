@@ -38,7 +38,7 @@ Please refer to the following list to select the correct manifest file:
 |**yocto-arm64-tqma8mpxl-mba8mpxl.xml**|TQ-Systems TQMa8MPxL on MBa8MPxL SBC
 
 ```
-repo init -u https://github.com/gyroidos/gyroidos.git -b kirkstone -m <manifest file>
+repo init -u https://github.com/gyroidos/gyroidos.git -b main -m <manifest file>
 repo sync -j8
 ```
 
