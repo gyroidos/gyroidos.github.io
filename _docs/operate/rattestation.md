@@ -81,7 +81,7 @@ The following commands are run on the host, not the QEMU VM.
 
 1. Clone the [cml repository](https://github.com/gyroidos/cml/)
 2. Navigate to the `cml/rattestation` directory.
-3. Install the dependencies listed [in the README](https://github.com/glad-dev/cml/tree/kirkstone/rattestation#readme).
+3. Install the dependencies listed [in the README](https://github.com/gyroidos/cml/tree/main/rattestation#readme).
 4. Create the log directory with `mkdir /data/logs` or change `#define LOGFILE_DIR "/data/logs"` in `main.c`.
 5. Build the attestation tool with `make`.
 6. Extract the first certificate from the trust chain located at `ws-yocto/out-yocto/test_certificates/ssig_subca.cert` and save it as `yocto.pem`.
