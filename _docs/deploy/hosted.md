@@ -22,7 +22,7 @@ sudo apt update && sudo apt-get install -y git build-essential unzip re2c pkg-co
     check lxcfs libprotobuf-c-dev automake libtool libselinux1-dev libcap-dev \
     protobuf-c-compiler libssl-dev udhcpd udhcpd libsystemd-dev debootstrap \
     squashfs-tools python3-protobuf protobuf-compiler \
-    cryptsetup-bin iptables
+    cryptsetup-bin iptables e2fsprogs
 ```
 
 ### Protobuf-c-text
