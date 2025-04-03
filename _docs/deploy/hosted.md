@@ -9,7 +9,7 @@ order: 5
 
 GyroidOS containers can also be run natively on your host, using the hosted mode.
 This section describes how to run the hosted mode.
-These instructions have been tested and work on Debian 13 Trixi.
+These instructions have been tested and work on Debian 13 Trixie.
 
 ## Requirements
 
