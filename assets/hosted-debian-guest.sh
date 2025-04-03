@@ -112,12 +112,5 @@ while true; do
 done
 
 # Determine container's PID
-print "Determining container's PID"
-CONTAINER_PID=$(ps auxf | grep -A 10 "[/]usr/sbin/cmld" | grep /sbin/init | awk '{print $2}')
-if [ -z "${CONTAINER_PID}" ]; then
-    print "Failed to determine container's PID"
-    exit 1
-fi
-
 print "To connect to the container, run:"
-echo "sudo nsenter -at ${CONTAINER_PID}"
+echo "cml-control run $GUEST_NAME bash"
