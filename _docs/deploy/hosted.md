@@ -97,10 +97,6 @@ Download and run the [guest setup script](/assets/hosted-debian-guest.sh), which
 12. Update the container’s password (default is `"trustme"`) with `cml-control change_pin "$GUEST_NAME"`
 13. Start the container with: `cml-control start "$GUEST_NAME"`. If the command returns `CONTAINER_START_EINTERNAL`, re-run the command.
 14. Verify that the container is running by executing: `cml-control list "$GUEST_NAME"`
-15. To access the container’s:
-    - Run `ps auxf` and locate the `/usr/sbin/cmld` process.
-    - Find its child process running `/sbin/init`.
-    - Note the PID of the process.
-    - Connect to the container using `sudo nsenter -at $PID`
+15. To access the container’s: `cml-control run $GUEST_NAME bash`
 
 For additional details, see the [GuestOS configuration](/operate/guestos_config) and [Basic Operation](/operate/control) documentation pages.
