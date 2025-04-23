@@ -70,7 +70,9 @@ sudo cp -r out/gyroidos-guests/* /var/lib/cml/operatingsystems
 
 # Disable signed configs
 print "Disabling signed configs for this example"
-echo "signed_configs: false" | sudo tee -a /etc/cml/device.conf > /dev/null
+if ! grep -q "signed_configs" /etc/cml/device.conf; then
+    echo "signed_configs: false" | sudo tee -a /etc/cml/device.conf > /dev/null
+fi
 
 # Restart cmld service, for some reason `systemctl restart cmld` does not work
 print "Restarting cmld service"
