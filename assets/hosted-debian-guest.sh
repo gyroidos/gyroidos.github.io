@@ -40,6 +40,13 @@ if [ ! -d "${CERTS_DIR}" ]; then
     exit 1
 fi
 
+# 0. Check if cmld is running
+if ! systemctl status cmld.service | grep "Active: active"; then
+    echo "cmld is not running."
+    echo "Start cmld and re-run the script"
+    exit 1
+fi
+
 # 1. Create and enter GuestOS directory
 print "Creating GuestOS directory at ${GUEST_OS_DIR}"
 mkdir "${GUEST_OS_DIR}"
@@ -64,9 +71,14 @@ mv "${GUEST_NAME}.tar" rootfs/"${GUEST_NAME}os.tar"
 print "Building the guest OS '${GUEST_NAME}'"
 sudo cml_build_guestos build "${GUEST_NAME}"
 
-# Move guest OS to the operating systems directory
-print "Moving guest OS to '/var/lib/cml/operatingsystems'"
-sudo cp -r out/gyroidos-guests/* /var/lib/cml/operatingsystems
+# Preparing to install the operating system
+print "Preparing to install the operating system"
+mkdir -p operatingsystems/x86/
+sudo mv out/gyroidos-guests/guest-bookwormos-1/root.* operatingsystems/x86/
+
+# Installing operating system
+print "Installing operating system"
+cml-control push_guestos_config out/gyroidos-guests/guest-bookwormos-1.conf out/gyroidos-guests/guest-bookwormos-1.sig out/gyroidos-guests/guest-bookwormos-1.cert
 
 # Disable signed configs
 print "Disabling signed configs for this example"
