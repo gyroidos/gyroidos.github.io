@@ -89,14 +89,16 @@ Download and run the [guest setup script](/assets/hosted-debian-guest.sh), which
 4. Add the rootfs to an uncompressed tarball named `${GUEST_NAME}os.tar`
 5. Move the tar ball into the `rootfs/` directory that was created in step 2
 6. Build the Guest OS with `cml_build_guestos build $GUEST_NAME`
-7. Add the built Guest OS to CML by copying the contents of the generated `out/` directory to `/var/lib/cml/operatingsystems`
-8. For this example, append `signed_configs: false` to `/etc/cml/device.conf`
-9. Restart the `cmld` service
-10. Confirm that the new Guest OS is detected by running: `cml-control list_guestos`
-11. Create a GyroidOS container using its configuration file with `cml-control create conf/${GUEST_NAME}container.conf`
-12. Update the container’s password (default is `"trustme"`) with `cml-control change_pin "$GUEST_NAME"`
-13. Start the container with: `cml-control start "$GUEST_NAME"`. If the command returns `CONTAINER_START_EINTERNAL`, re-run the command.
-14. Verify that the container is running by executing: `cml-control list "$GUEST_NAME"`
-15. To access the container’s: `cml-control run $GUEST_NAME bash`
+7. Create a new directory called `operatingsystems/x86/` even if not on an x86 system
+8. Copy `root.img` and `root.hash.img` from `out/gyroidos-guests/${GUEST_NAME}os-1/` to this directory
+9. Install the operating system with `cml-control push_guestos_config out/gyroidos-guests/guest-bookwormos-1.conf out/gyroidos-guests/guest-bookwormos-1.sig out/gyroidos-guests/guest-bookwormos-1.cert`
+10. For this example, append `signed_configs: false` to `/etc/cml/device.conf`
+11. Restart the `cmld` service
+12. Confirm that the new Guest OS is detected by running: `cml-control list_guestos`
+13. Create a GyroidOS container using its configuration file with `cml-control create conf/${GUEST_NAME}container.conf`
+14. Update the container’s password (default is `"trustme"`) with `cml-control change_pin "$GUEST_NAME"`
+15. Start the container with: `cml-control start "$GUEST_NAME"`. If the command returns `CONTAINER_START_EINTERNAL`, re-run the command.
+16. Verify that the container is running by executing: `cml-control list "$GUEST_NAME"`
+17. To access the container’s: `cml-control run $GUEST_NAME bash`
 
 For additional details, see the [GuestOS configuration](/operate/guestos_config) and [Basic Operation](/operate/control) documentation pages.
