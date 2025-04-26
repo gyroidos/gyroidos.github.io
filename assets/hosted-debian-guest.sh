@@ -31,41 +31,40 @@ GUEST_NAME="guest-bookworm"
 CONTAINER_NAME="${GUEST_NAME}container"
 
 print() {
-    echo
-    echo "$*"
+	echo
+	echo "$*"
 }
 
 architecture() {
-    arch="$(uname -m)"
+	arch="$(uname -m)"
 
-    case "$arch" in
-        arm* | aarch64 )
-            arch="arm"
-            ;;
-        x86*)
-            arch="x86"
-            ;;
-        *)
-            echo "Unsupported architecture $arch"
-            exit 1
-            ;;
-    esac
+	case "$arch" in
+	arm* | aarch64)
+		arch="arm"
+		;;
+	x86*)
+		arch="x86"
+		;;
+	*)
+		echo "Unsupported architecture $arch"
+		exit 1
+		;;
+	esac
 
-    echo "$arch"
+	echo "$arch"
 }
-
 
 # Script start
 if [ ! -d "${CERTS_DIR}" ]; then
-    print "Certificate directory '${CERTS_DIR}' is missing"
-    exit 1
+	print "Certificate directory '${CERTS_DIR}' is missing"
+	exit 1
 fi
 
 # 0. Check if cmld is running
 if ! systemctl status cmld.service | grep "Active: active"; then
-    echo "cmld is not running."
-    echo "Start cmld and re-run the script"
-    exit 1
+	echo "cmld is not running."
+	echo "Start cmld and re-run the script"
+	exit 1
 fi
 
 # 1. Create and enter GuestOS directory
@@ -101,19 +100,19 @@ sudo mv out/gyroidos-guests/guest-bookwormos-1/ "$install_path"
 # Disable signed configs
 print "Disabling signed configs for this example"
 if grep -q "signed_configs" /etc/cml/device.conf; then
-    echo "Already disabled"
+	echo "Already disabled"
 else
-    echo "signed_configs: false" | sudo tee -a /etc/cml/device.conf > /dev/null
+	echo "signed_configs: false" | sudo tee -a /etc/cml/device.conf >/dev/null
 fi
 
 # Set update URL
 print "Setting update_base_url"
 update_base_url="update_base_url: \"file://$(realpath "$GUEST_OS_DIR")\""
 if grep -q "update_base_url:" /etc/cml/device.conf; then
-    # There already exists an URL => replace it
-    sudo sed -i "s/^update_base_url:.*/$update_base_url/" /etc/cml/device.conf
+	# There already exists an URL => replace it
+	sudo sed -i "s/^update_base_url:.*/$update_base_url/" /etc/cml/device.conf
 else
-    echo "$update_base_url" | sudo tee -a /etc/cml/device.conf > /dev/null
+	echo "$update_base_url" | sudo tee -a /etc/cml/device.conf >/dev/null
 fi
 
 # Installing operating system
@@ -127,15 +126,15 @@ sleep 1
 sudo systemctl start cmld.service
 print "Verifying that cmld service restarted successfully"
 if ! systemctl is-active --quiet cmld.service; then
-    echo "cmld service failed to start"
-    exit 1
+	echo "cmld service failed to start"
+	exit 1
 fi
 
 # Verify guest OS registration
 print "Verifying that the guest OS was successfully registered"
 if ! cml-control list_guestos | grep -q "${GUEST_NAME}"; then
-    echo "Guest OS '${GUEST_NAME}' registration verification failed"
-    exit 1
+	echo "Guest OS '${GUEST_NAME}' registration verification failed"
+	exit 1
 fi
 
 # Create GyroidOS container
@@ -150,35 +149,35 @@ printf "trustme\n\n\n" | cml-control change_pin "${CONTAINER_NAME}"
 print "Starting the container '${CONTAINER_NAME}'"
 
 while true; do
-    STATE=$(printf "\n" | cml-control start "$CONTAINER_NAME")
+	STATE=$(printf "\n" | cml-control start "$CONTAINER_NAME")
 
-    if echo "$STATE" | grep -q "CONTAINER_START_OK"; then
-        echo "Container has started"
-        break
-    elif echo "$STATE" | grep -q "CONTAINER_START_EEXIST"; then
-        echo "Container already exists"
-        break
-    fi
+	if echo "$STATE" | grep -q "CONTAINER_START_OK"; then
+		echo "Container has started"
+		break
+	elif echo "$STATE" | grep -q "CONTAINER_START_EEXIST"; then
+		echo "Container already exists"
+		break
+	fi
 
-    echo "Container has not been started: $STATE. Waiting for 2 seconds before retrying"
-    sleep 2
+	echo "Container has not been started: $STATE. Waiting for 2 seconds before retrying"
+	sleep 2
 done
 
 # Wait for the container to be running
 print "Waiting for the container to be ready"
 while true; do
-    STATE=$(cml-control list "${CONTAINER_NAME}" | grep "state:")
+	STATE=$(cml-control list "${CONTAINER_NAME}" | grep "state:")
 
-    if echo "$STATE" | grep -q "RUNNING"; then
-        echo "Container is running"
-        break
-    elif echo "$STATE" | grep -q "STOPPED"; then
-        echo "Container has stopped. An error has occurred."
-        exit 1
-    else
-        echo "Container is not yet running: $STATE. Waiting for 5 seconds before retrying"
-        sleep 5
-    fi
+	if echo "$STATE" | grep -q "RUNNING"; then
+		echo "Container is running"
+		break
+	elif echo "$STATE" | grep -q "STOPPED"; then
+		echo "Container has stopped. An error has occurred."
+		exit 1
+	else
+		echo "Container is not yet running: $STATE. Waiting for 5 seconds before retrying"
+		sleep 5
+	fi
 done
 
 # Determine container's PID
