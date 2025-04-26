@@ -35,6 +35,27 @@ print() {
     echo "$*"
 }
 
+architecture() {
+    arch="$(uname -m)"
+
+    case "$arch" in
+        arm* | aarch64 )
+            arch="arm"
+            ;;
+        x86*)
+            arch="x86"
+            ;;
+        *)
+            echo "Unsupported architecture $arch"
+            exit 1
+            ;;
+    esac
+
+    echo "$arch"
+}
+
+
+# Script start
 if [ ! -d "${CERTS_DIR}" ]; then
     print "Certificate directory '${CERTS_DIR}' is missing"
     exit 1
@@ -73,18 +94,31 @@ sudo cml_build_guestos build "${GUEST_NAME}"
 
 # Preparing to install the operating system
 print "Preparing to install the operating system"
-mkdir -p operatingsystems/x86/
-sudo mv out/gyroidos-guests/guest-bookwormos-1/root.* operatingsystems/x86/
+install_path="operatingsystems/$(architecture)/"
+mkdir -p "$install_path"
+sudo mv out/gyroidos-guests/guest-bookwormos-1/ "$install_path"
+
+# Disable signed configs
+print "Disabling signed configs for this example"
+if grep -q "signed_configs" /etc/cml/device.conf; then
+    echo "Already disabled"
+else
+    echo "signed_configs: false" | sudo tee -a /etc/cml/device.conf > /dev/null
+fi
+
+# Set update URL
+print "Setting update_base_url"
+update_base_url="update_base_url: \"file://$(realpath "$GUEST_OS_DIR")\""
+if grep -q "update_base_url:" /etc/cml/device.conf; then
+    # There already exists an URL => replace it
+    sudo sed -i "s/^update_base_url:.*/$update_base_url/" /etc/cml/device.conf
+else
+    echo "$update_base_url" | sudo tee -a /etc/cml/device.conf > /dev/null
+fi
 
 # Installing operating system
 print "Installing operating system"
 cml-control push_guestos_config out/gyroidos-guests/guest-bookwormos-1.conf out/gyroidos-guests/guest-bookwormos-1.sig out/gyroidos-guests/guest-bookwormos-1.cert
-
-# Disable signed configs
-print "Disabling signed configs for this example"
-if ! grep -q "signed_configs" /etc/cml/device.conf; then
-    echo "signed_configs: false" | sudo tee -a /etc/cml/device.conf > /dev/null
-fi
 
 # Restart cmld service, for some reason `systemctl restart cmld` does not work
 print "Restarting cmld service"
