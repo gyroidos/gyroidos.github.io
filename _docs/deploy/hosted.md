@@ -83,16 +83,18 @@ Download and run the [guest setup script](/assets/hosted-debian-guest.sh), which
 
 ### Manual
 
-1. Create a folder for the Guest OS
+1. Create a folder for the Guest OS (`$BASE`)
 2. Initialize the folder and generate a basic configuration with `cml_build_guestos init $GUEST_NAME --pki /path/to/dir`
 3. Create a new rootfs using, e.g. `debootstrap`
 4. Add the rootfs to an uncompressed tarball named `${GUEST_NAME}os.tar`
 5. Move the tar ball into the `rootfs/` directory that was created in step 2
 6. Build the Guest OS with `cml_build_guestos build $GUEST_NAME`
-7. Create a new directory called `operatingsystems/x86/` even if not on an x86 system
-8. Copy `root.img` and `root.hash.img` from `out/gyroidos-guests/${GUEST_NAME}os-1/` to this directory
-9. Install the operating system with `cml-control push_guestos_config out/gyroidos-guests/guest-bookwormos-1.conf out/gyroidos-guests/guest-bookwormos-1.sig out/gyroidos-guests/guest-bookwormos-1.cert`
-10. For this example, append `signed_configs: false` to `/etc/cml/device.conf`
+7. Create a new directory called `operatingsystems/<system-architecture>/`, replace `<system-architecture>` with `x86` or `arm`
+8. Move `out/gyroidos-guests/${GUEST_NAME}os-1/` to `operatingsystems/<system-architecture>/`
+9. Install the operating system with `cml-control push_guestos_config ${GUEST_NAME}os-1.conf ${GUEST_NAME}os-1.sig ${GUEST_NAME}os-1.cert`
+10. In `/etc/cml/device.conf`, set
+    - `signed_configs: false` to disable the signature verfication for development. This should **never** be done in production.
+    - `update_base_url: "file://$BASE"`
 11. Restart the `cmld` service
 12. Confirm that the new Guest OS is detected by running: `cml-control list_guestos`
 13. Create a GyroidOS container using its configuration file with `cml-control create conf/${GUEST_NAME}container.conf`
