@@ -118,14 +118,14 @@ print "Starting the container '${CONTAINER_NAME}'"
 while true; do
     STATE=$(printf "\n" | cml-control start "$CONTAINER_NAME")
 
-    if $(echo "$STATE" | grep -q "CONTAINER_START_OK"); then
+    if echo "$STATE" | grep -q "CONTAINER_START_OK"; then
         echo "Container has started"
         break
-    elif $(echo "$STATE" | grep -q "CONTAINER_START_EEXIST"); then
+    elif echo "$STATE" | grep -q "CONTAINER_START_EEXIST"; then
         echo "Container already exists"
         break
     fi
-    
+
     echo "Container has not been started: $STATE. Waiting for 2 seconds before retrying"
     sleep 2
 done
@@ -135,10 +135,10 @@ print "Waiting for the container to be ready"
 while true; do
     STATE=$(cml-control list "${CONTAINER_NAME}" | grep "state:")
 
-    if $(echo "$STATE" | grep -q "RUNNING"); then
+    if echo "$STATE" | grep -q "RUNNING"; then
         echo "Container is running"
         break
-    elif $(echo "$STATE" | grep -q "STOPPED"); then
+    elif echo "$STATE" | grep -q "STOPPED"; then
         echo "Container has stopped. An error has occurred."
         exit 1
     else
