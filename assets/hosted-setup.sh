@@ -33,18 +33,18 @@ GROUP_NAME="cml-control"
 CERTS_DIR=~/test-certs
 
 # Create and add user to the cml-control group
-if $(groups | grep -q "$GROUP_NAME"); then
+if groups | grep -q "$GROUP_NAME"; then
 	echo "Group '$GROUP_NAME' already exists"
 else
 	echo "Creating cml-control group"
 	sudo addgroup cml-control
 fi
 
-if $(id | grep -q "$GROUP_NAME"); then
+if id | grep -q "$GROUP_NAME"; then
 	echo "User is already in the '$GROUP_NAME' group"
 else
 	echo "Adding current user to group"
-	sudo usermod -aG cml-control $(whoami)
+	sudo usermod -aG cml-control "$(whoami)"
 	echo "Reloading groups, you may need to re-run the script to continue."
 	(newgrp "$GROUP_NAME")
 fi
@@ -54,7 +54,7 @@ print "Creating log directory"
 sudo mkdir -p /var/log/cml/cml-scd
 
 # Creating tokens
-if [ -d "/var/lib/cml/tokens/" ] && [ ! -z "$(ls -A '/var/lib/cml/tokens/')" ]; then
+if [ -d "/var/lib/cml/tokens/" ] && [ -n "$(ls -A '/var/lib/cml/tokens/')" ]; then
 	echo "Using existing tokens"
 else
 	echo "Initalizing tokens"
@@ -79,7 +79,7 @@ sudo systemctl start cmld.service
 
 print "Waiting for the service to start"
 sleep 2
-if $(systemctl is-active --quiet cmld.service); then
+if systemctl is-active --quiet cmld.service; then
 	echo "Starting the service was successful."
 	echo "You're good to go"
 else
