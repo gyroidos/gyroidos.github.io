@@ -90,7 +90,7 @@ The GyroidOS software stack runs on following hardware platforms:
 | ARM 64 | Raspberry Pi3 | Uboot Verified Boot |
 | ARM 32 | Raspberry Pi2 | Uboot Verified Boot |
 | ARM 64 | TQ-Systems TQMa8MPxL | Uboot Verified Boot |
-| ARM 32 | Nexus 5/5X | no longer supported (legacy Android build) |
+| RISC-V 64 | BeagleV-Fire | Uboot Verified Boot |
 
 ## Publications
 
