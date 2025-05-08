@@ -1,20 +1,20 @@
 ---
-title: "riscv: BeagleV-Fire"
+title: "RISC-V: BeagleV-Fire"
 category: Deploy
 order: 3
 ---
 
-# Deploy GyroidOS on BeagleV-Fire platforms
+# Deploy GyroidOS on BeagleV-Fire
 - TOC
 {:toc}
 
-This section describes how to deploy GyroidOS on the BeagleV-Fire SBC.
+This section describes how to deploy GyroidOS on the BeagleV-Fire board.
 
 ## Create bootable medium
 
 ### Requirements
 * A successfully built GyroidOS image file `gyroidosimage.img`.
-* The script **copy_image_to_disk_mbr.sh** which can be found [on GitHub](https://github.com/gyroidos/gyroidos/raw/main/yocto/copy_image_to_disk.sh) or in your build folder at `gyroidos/build/yocto/copy_image_to_disk.sh`
+* The script **copy_image_to_disk.sh** which can be found [on GitHub](https://github.com/gyroidos/gyroidos/raw/main/yocto/copy_image_to_disk.sh) or in your build folder at `gyroidos/build/yocto/copy_image_to_disk.sh`
 * Optional: Bmap file `gyroidosimage.img.bmap` which is automatically created by the build system and deployed next to `gyroidosimage.img`. This enables flashing using [bmaptool](https://manpages.debian.org/testing/bmap-tools/bmaptool.1.en.html).
 
 
