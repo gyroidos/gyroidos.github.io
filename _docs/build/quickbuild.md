@@ -97,3 +97,16 @@ echo 'ACCEPT_FSL_EULA = "1"' >> conf/local.conf
 bitbake multiconfig:container:gyroidos-core
 bitbake gyroidos-cml
 ```
+
+## BegaleV-Fire
+
+```
+mkdir ws-yocto
+cd ws-yocto
+repo init -u https://github.com/gyroidos/gyroidos.git -b main \
+     -m yocto-riscv-beagle-fire.xml
+repo sync -j8
+source init_ws.sh out-yocto riscv beaglev-fire
+bitbake multiconfig:container:gyroidos-core
+bitbake gyroidos-cml
+```

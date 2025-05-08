@@ -36,6 +36,7 @@ Please refer to the following list to select the correct manifest file:
 |**yocto-arm32-raspberrypi2.xml**|Raspberry Pi2
 |**yocto-arm64-raspberrypi3-64.xml**|Raspberry Pi3
 |**yocto-arm64-tqma8mpxl-mba8mpxl.xml**|TQ-Systems TQMa8MPxL on MBa8MPxL SBC
+|**yocto-riscv-beaglev-fire.xml**|BeagleV-Fire from beaglboard.org
 
 ```
 repo init -u https://github.com/gyroidos/gyroidos.git -b main -m <manifest file>
@@ -53,6 +54,7 @@ The following architectures and devices are supported currently:
 |arm32|raspberrypi2|
 |arm64|raspberrypi3|
 |arm64|tqma8mpxl|
+|riscv|beaglev-fire|
 
 ```
 source init_ws.sh out-yocto <architecture> <machine>
