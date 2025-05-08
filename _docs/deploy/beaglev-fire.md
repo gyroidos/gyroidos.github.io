@@ -49,9 +49,9 @@ sudo copy_image_to_disk.sh \
 
 Connect a USB2UART-Cable to the Debug port of the BeagleV-Fire board.
 See image:
-<img alt="BegaleV-Fire UART Debug" src="https://docs.beagle.cc/_images/BeagleV-Fire-UART-Debug.webp" width="55%">
+<img alt="BegaleV-Fire UART Debug" src="https://docs.beagle.cc/_images/BeagleV-Fire-UART-Debug.webp" width="65%">
 
-After boot debug shell into the CML will be available at on that serial tty if you
+After boot debug shell into the CML will be available on that serial tty if you
 have flashed debug-Image.
 Further, the init log messages will appear on that serial tty as well as output of
 the CML services, cmld and scd.
