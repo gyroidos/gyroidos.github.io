@@ -24,12 +24,6 @@
 
 set -euo pipefail
 
-CERTS_DIR="${HOME}/test-certs"
-GUEST_OS_DIR="${HOME}/cmld_guestos"
-ROOTFS_DIR="rootfs-builder"
-GUEST_NAME="guest-bookworm"
-CONTAINER_NAME="${GUEST_NAME}container"
-
 print() {
 	echo
 	echo "$*"
@@ -53,6 +47,14 @@ architecture() {
 
 	echo "$arch"
 }
+
+CERTS_DIR="${HOME}/test-certs"
+GUEST_OS_DIR="${HOME}/cmld_guestos"
+ROOTFS_DIR="rootfs-builder"
+GUEST_NAME="bookworm"
+CONTAINER_NAME="${GUEST_NAME}container"
+INSTALL_PATH="${GUEST_OS_DIR}/operatingsystems/$(architecture)/"
+
 
 # Script start
 if [ ! -d "${CERTS_DIR}" ]; then
@@ -93,9 +95,8 @@ sudo cml_build_guestos build "${GUEST_NAME}"
 
 # Preparing to install the operating system
 print "Preparing to install the operating system"
-install_path="operatingsystems/$(architecture)/"
-mkdir -p "$install_path"
-sudo mv out/gyroidos-guests/guest-bookwormos-1/ "$install_path"
+mkdir -p "$INSTALL_PATH"
+sudo mv "out/gyroidos-guests/${GUEST_NAME}os-1/" "$INSTALL_PATH"
 
 # Disable signed configs
 print "Disabling signed configs for this example"
@@ -109,15 +110,20 @@ fi
 print "Setting update_base_url"
 update_base_url="update_base_url: \"file://$(realpath "$GUEST_OS_DIR")\""
 if grep -q "update_base_url:" /etc/cml/device.conf; then
-	# There already exists an URL => replace it
-	sudo sed -i "s/^update_base_url:.*/$update_base_url/" /etc/cml/device.conf
-else
-	echo "$update_base_url" | sudo tee -a /etc/cml/device.conf >/dev/null
+	# There already exists an URL => delete it
+	sudo sed -i '/^update_base_url/d' /etc/cml/device.conf
+fi
+echo "$update_base_url" | sudo tee -a /etc/cml/device.conf >/dev/null
+
+if [ ! -f "${INSTALL_PATH}/${GUEST_NAME}os-1/root.img" ]; then
+	echo "root.img does not exist!"
+	exit 1
 fi
 
 # Installing operating system
 print "Installing operating system"
-cml-control push_guestos_config out/gyroidos-guests/guest-bookwormos-1.conf out/gyroidos-guests/guest-bookwormos-1.sig out/gyroidos-guests/guest-bookwormos-1.cert
+prefix="${GUEST_OS_DIR}/out/gyroidos-guests/${GUEST_NAME}os-1"
+cml-control push_guestos_config "${prefix}.conf" "${prefix}.sig" "${prefix}.cert"
 
 # Restart cmld service, for some reason `systemctl restart cmld` does not work
 print "Restarting cmld service"
@@ -182,4 +188,4 @@ done
 
 # Determine container's PID
 print "To connect to the container, run:"
-echo "cml-control run $GUEST_NAME bash"
+echo "cml-control run $CONTAINER_NAME bash"
