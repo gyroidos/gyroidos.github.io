@@ -1,7 +1,7 @@
 ---
-title: Embedded World Conference 2025
-#category: General
-order: 4
+title: EWC 2025
+category: Talks
+order: 1
 ---
 
 
