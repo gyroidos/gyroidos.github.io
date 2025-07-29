@@ -56,29 +56,3 @@ apt-get install build-essential chrpath cpio debianutils diffstat file \
 ```
 apt-get install repo python3-protobuf
 ```
-
-<!--
-### IDS trusted connector specific requirements (optionally)
-Install the following software packages for a Yarn-based
-build of the [Trusted Connector](/index#use-cases) core compartment.
-Note that this step is already included in the Docker-based environment above.
-
-
-1. Install Java 8 JDK and additional dependencies
-```
-apt-get update
-apt-get install kmod procps curl apt-get install openjdk-8-jdk-headless openjdk-8-jre-headless
-```
-2. Install Nodejs 11
-```
-curl -sL https://deb.nodesource.com/setup_11.x | bash -
-apt-get install nodejs
-```
-3. Install Yarn
-```
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-apt-get update
-apt-get install yarn
-```
--->

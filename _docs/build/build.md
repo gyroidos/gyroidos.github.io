@@ -8,7 +8,7 @@ order: 3
 - TOC
 {:toc}
 
-The steps to build GyroidOS are very similar for each flavour of the platform such as core, IDS, etc. The difference between these flavours are the containers installed on GyroidOS. In order to build the GyroidOS flavour you're interested in, select the appropriate containers in [the corresponding build step](#include-containers-to-gyroidos-image).
+The steps to build GyroidOS are very similar for each flavour of the platform such as core. The difference between these flavours are the containers installed on GyroidOS. In order to build the GyroidOS flavour you're interested in, select the appropriate containers in [the corresponding build step](#include-containers-to-gyroidos-image).
 If you just want to try out GyroidOS the core flavour is the best option for you.
 
 > Some build steps are architecture / device dependent. These steps are only necessary for that specific architecture / device.
