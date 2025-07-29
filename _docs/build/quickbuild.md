@@ -21,7 +21,7 @@ repo init -u https://github.com/gyroidos/gyroidos.git -b main \
     -m yocto-x86-genericx86-64.xml
 repo sync -j8
 source init_ws.sh out-yocto x86 genericx86-64
-bitbake multiconfig:container:gyroidos-core
+bitbake multiconfig:guestos:gyroidos-core
 bitbake gyroidos-cml
 bitbake gyroidos-keytool
 ```
@@ -41,7 +41,7 @@ repo init -u https://github.com/gyroidos/gyroidos.git -b main \
      -m yocto-arm64-raspberrypi5.xml
 repo sync -j8
 source init_ws.sh out-yocto arm64 raspberrypi5
-bitbake multiconfig:container:gyroidos-core
+bitbake multiconfig:guestos:gyroidos-core
 bitbake gyroidos-cml
 ```
 
@@ -54,7 +54,7 @@ repo init -u https://github.com/gyroidos/gyroidos.git -b main \
      -m yocto-arm64-raspberrypi4-64.xml
 repo sync -j8
 source init_ws.sh out-yocto arm64 raspberrypi4-64
-bitbake multiconfig:container:gyroidos-core
+bitbake multiconfig:guestos:gyroidos-core
 bitbake gyroidos-cml
 ```
 
@@ -67,7 +67,7 @@ repo init -u https://github.com/gyroidos/gyroidos.git -b main \
      -m yocto-arm64-raspberrypi3-64.xml
 repo sync -j8
 source init_ws.sh out-yocto arm64 raspberrypi3-64
-bitbake multiconfig:container:gyroidos-core
+bitbake multiconfig:guestos:gyroidos-core
 bitbake gyroidos-cml
 ```
 
@@ -80,7 +80,7 @@ repo init -u https://github.com/gyroidos/gyroidos.git -b main \
      -m yocto-arm32-raspberrypi2.xml
 repo sync -j8
 source init_ws.sh out-yocto arm32 raspberrypi2
-bitbake multiconfig:container:gyroidos-core
+bitbake multiconfig:guestos:gyroidos-core
 bitbake gyroidos-cml
 ```
 
@@ -94,7 +94,7 @@ repo init -u https://github.com/gyroidos/gyroidos.git -b main \
 repo sync -j8
 source init_ws.sh out-yocto arm64 tqma8mpxl
 echo 'ACCEPT_FSL_EULA = "1"' >> conf/local.conf
-bitbake multiconfig:container:gyroidos-core
+bitbake multiconfig:guestos:gyroidos-core
 bitbake gyroidos-cml
 ```
 
@@ -107,6 +107,6 @@ repo init -u https://github.com/gyroidos/gyroidos.git -b main \
      -m yocto-riscv-beaglev-fire.xml
 repo sync -j8
 source init_ws.sh out-yocto riscv beaglev-fire
-bitbake multiconfig:container:gyroidos-core
+bitbake multiconfig:guestos:gyroidos-core
 bitbake gyroidos-cml
 ```

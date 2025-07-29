@@ -78,30 +78,25 @@ bitbake multiconfig:pmu:pmu-firmware
 -->
 
 ## Include containers to GyroidOS image
-These commands install guest operating systems and containers (e.g. the IDS container) to your GyroidOS platform.
+These commands install guest operating systems and containers to your GyroidOS platform.
 In order to make GyroidOS work out of the box, use exactly **one** of the following commands.
 Experienced users may choose to include all containers. However this will require manual configuration of the platform.
 
 Build and include the minimal core container
 ```
-bitbake multiconfig:container:gyroidos-core
-```
-
-Build and include the IDS Trusted Connector container
-```
-bitbake multiconfig:container:ids
+bitbake multiconfig:guestos:gyroidos-core
 ```
 
 Build and include the debian/os installer image (see [example: Using GuestOs debos](/operate/examples/#example-using-guestos-debos))
 ```
-bitbake multiconfig:container:deb
+bitbake multiconfig:guestos:deb
 ```
 
 > **experimental**:
 Build and include the docker-converter image
 (see [example: Using docker-convertos](/operate/examples/#example-using-docker-convertos))
 ```
-bitbake multiconfig:container:docker-convert
+bitbake multiconfig:guestos:docker-convert
 ```
 
 ## Build GyroidOS image
