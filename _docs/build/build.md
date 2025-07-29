@@ -131,10 +131,8 @@ bitbake gyroidos-keytool
 
 # Build FAQ
 ## Where is the image saved to
-> x86 UEFI specific
-
-The image is saved to `ws-yocto/out-yocto/tmp/deploy/images/genericx86-64/trustx-cml-genericx86-64-${date}.rootfs.wic`,
-where `${date}` is the build date, e.g. `20241018122338`.
+The image is saved to `ws-yocto/out-yocto/tmp/deploy/images/${MACHINE}/gyroidos_image/gyroidosimage.img`,
+where `${MACHINE}` is the target selected when setting up the yocto environment, e.g. `genericx86-64`.
 
 ## How to change kernel config
 #### Temporarily
