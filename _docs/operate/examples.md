@@ -16,7 +16,7 @@ In order to achieve that, we use the setup mode for running a container instance
 ### Prerequisites
 * a running (deployed) GyroidOS system.
 * configured internet access in core0 (default is dhcp on eth0)
-* we assume a standard password for usertoken "trustme"
+* we assume a standard password for initial usertoken "trustme"
 * an installed debos image in that system   
 
  You can verify that debos is installed by:
@@ -37,16 +37,17 @@ vnet_configs {
 }
 image_sizes {
     image_name: "enc_root"
-    image_size: 8192
+    image_size: 4096
 }
 ```
-The images_size argument overwrites the standard size of the encrypted writable
+The image_sizes argument overwrites the standard size of the encrypted writable
 data image which is mounted as rootfs in case of normal boot.
 
 Create and start the container in setup mode:
 ```
 control create debian1.skel
-control start debian1 --key=trustme --setup
+control change_pin debian1      # use trustme as nurrent password
+control start debian1 --setup   # use your just set password
 ```
 You can verify that the container has reached setup state by:
 ```
@@ -63,23 +64,20 @@ of the installer. We proceed with `debootstrap`.
 especially control characters like [Ctrl]+C, may work as expected.
 
 ```
-control run debian1 /bin/bash
+control run debian1 bash
 ``` 
 Now we are inside the container "debian1".   
 You can check if the encrypted root is mounted on setup by calling `mount`
 
 Install debian as follows:
 ```
-export PATH=$PATH
-debootstrap stretch /setup
-printf '%s\n' '#!/bin/bash' '/sbin/cservice' 'exit 0' > /setup/etc/rc.local
-chmod a+x /setup/etc/rc.local
+debootstrap trixie /setup --include=ssh
 exit
 ```
 Now stop the container and start it normally:
 ```
-control stop debian1
-control start debian1 --key=trustme
+control stop debian1    # use your just set password
+control start debian1   # use your just set password
 ```
  
 # Example: Using docker-convertos
@@ -94,7 +92,9 @@ control start debian1 --key=trustme
     root@cml:~# control list_guestos | grep docker-convertos
     name: "docker-convertos"
     ```
+
 * configured internet access in core0 (default is dhcp on eth0)
+* enabled `localy_signed_images: true` in device.conf (this is the case for binary evaluation releases)
 * we assume a standard password for usertoken "trustme"
 
 ### Creating converter container
@@ -109,16 +109,19 @@ vnet_configs {
 }
 image_sizes {
   image_name: "tmp"
-  image_size: 8192
+  image_size: 4096
 }
 ```
 
 ```
-control run docker2 /bin/bash
+control create docker2.skel
+control change_pin docker2  # use trustme as current Password
+control start docker2       # use your just set password
+control state docker2       # wait for state RUNNING
+control run docker2 bash
 ```
 Inside container:
 ```
-export PATH=$PATH
 /etc/init.d/lighttpd start
 converter pull <dockerhub image> <tag>
 /etc/init.d/lighttpd stop
@@ -148,5 +151,6 @@ control create converted.skel
 ```
 Run it.
 ```
-control start converted3 --key=trustme
+control change_pin converted3  # use trustme as current password
+control start converted3       # use your just set password
 ```
