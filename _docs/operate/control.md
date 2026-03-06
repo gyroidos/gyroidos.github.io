@@ -35,6 +35,16 @@ corresponding container. However, for convenience also the container name could 
 However, if you have several containers with the same name, always the first matching
 one is used. In that case, you have to specify the UUID to address all containers.
 
+* Change the PIN/Passphrase for the container's token (USB or Softtoken)
+```
+control change_pin <container-uuid>
+```
+This command provides an interactive prompt for the old and new
+Pin/Passphrase for the container's token. Remember, the token is used for
+wrapping the container encryption keys and the here set PIN/Passphrase
+must be provided at container start and stop.
+(default passphrase for inital container provisioning is `trustme`)
+
 * Start container:
 ```
 control start <container-uuid> [ --setup ]
@@ -43,7 +53,7 @@ This command starts the container with the given UUID. In order to do so, the co
 The optional `--setup` parameter allows you to manipulate
 the containers root file system tree including all encrypted overlays mounted at `/setup`.
 This could be used to bootstrap an encrypted container, see [example: Using GuestOs debos](/operate/examples/#example-using-guestos-debos).
-When entering this command, you will be interactively asked for the Passphrase/PIN of the softtoken
+When entering this command, you will be interactively asked for the Passphrase/PIN of the token
 used for container en/decryption. If the container configuration specifies that an external USB pin
 reader device should be used (see [Container Configuration](/operate/container_config)), the
 PIN/passphrase must be entered via this device instead of the standard input keyboard.
@@ -53,7 +63,7 @@ PIN/passphrase must be entered via this device instead of the standard input key
 control stop <container-uuid>
 ```
 This command stops the currently running container with the given UUID.
-When entering this command, you will be interactively asked for the Passphrase/PIN of the softtoken
+When entering this command, you will be interactively asked for the Passphrase/PIN of the token
 used for container en/decryption. If the container configuration specifies that an external USB pin
 reader device should be used (see [Container Configuration](/operate/container_config)), the
 PIN/passphrase must be entered via this device instead of the standard input keyboard.
@@ -168,18 +178,6 @@ control unfreeze <container-uuid>
 ```
 Unfreezes the specified container that was previously frozen with `control freeze`
 
-* Allow Audio
-```
-control allow_audio <container-uuid>
-```
-Grant audio access to the specified container
-
-* Deny Audio
-```
-control deny_audio <container-uuid>
-```
-Denies audio access to the specified container
-
 * List GuestOS configuration:
 ```
 control list_guestos
@@ -230,14 +228,12 @@ Remember, you have to provide your own mechanism to transfer and sign
 the certification request to your CA. Further, you have to store the
 corresponding Customer CA root certificate in the trusted CA store, see `control ca_register`.
 
-* Change the softtoken's PIN/Passphrase
+* Get device stats
 ```
-control change_pin
+control device_stats
 ```
-This command provides an interactive prompt for old and new
-Pin/Passphrase for the softtoken. Remember, the softtoken is used for
-wrapping the container encryption keys and must be provided to container
-start. (default passphrase after self-provisioning is `trustme`
+Gives information about the system's disk usage and overall memory use/availabiltity
+which is available in the CML.
 
 * Reboot device
 ```
@@ -254,10 +250,22 @@ As soon as this command is run, the device is provisioned and only allows a subs
 run. All other ```control``` commands will return CMD_UNSUPPORTED error code.\
 The set of allowed commands in provisioned mode is:
 ```
+control state
 control list
 control change_pin
 control create
 control start
 control stop
 control update_config
+control ifaces
+control list_guestos
+control push_guestos_config
+control reboot
+control device_stats
 ```
+
+* Get the device status regarding provisioned mode
+```
+control get_provisioned
+```
+Gives information about the provisoned state, true or false.
