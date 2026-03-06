@@ -10,6 +10,10 @@ order: 3
 
 This section describes how to deploy GyroidOS on the BeagleV-Fire board.
 
+> **Current pre-built release image**: \\
+[gyroidosimage-{{site.release_tag}}-beaglev-fire.tar.xz]({{site.githuborg}}/{{site.repository}}/releases/download/{{site.release_tag}}/gyroidosimage-{{site.release_tag}}-beaglev-fire.tar.xz)
+
+
 ## Create bootable medium
 
 ### Requirements

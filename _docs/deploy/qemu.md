@@ -12,8 +12,7 @@ Before following these steps you need to create the partitioned GyroidOS image a
 or download a released image from Github.
 
 > **Current pre-built release image**: \\
-[trustmeimage-{{site.release_tag}}_x86_trustx-corei7-64.img.bz2]({{site.githuborg}}/{{site.repository}}/releases/download/{{site.release_tag}}/trustmeimage-{{site.release_tag}}_x86_trustx-corei7-64.img.bz2) \\
-[trustmeinstaller-{{site.release_tag}}_x86_trustx-corei7-64.img.bz2]({{site.githuborg}}/{{site.repository}}/releases/download/{{site.release_tag}}/trustmeinstaller-{{site.release_tag}}_x86_trustx-corei7-64.img.bz2)
+[gyroidosimage-{{site.release_tag}}-x86_64.tar.xz]({{site.githuborg}}/{{site.repository}}/releases/download/{{site.release_tag}}/gyroidosimage-{{site.release_tag}}-x86_64.tar.xz) \\
 
 
 In first place, you need to install QEMU/KVM and OVMF UEFI.

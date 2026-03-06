@@ -11,8 +11,10 @@ order: 3
 This section describes how to deploy GyroidOS on Raspberry Pi platforms.
 
 > **Current pre-built release image**: \\
-[trustmeimage-{{site.release_tag}}_arm32_raspberrypi2.img.bz2]({{site.githuborg}}/{{site.repository}}/releases/download/{{site.release_tag}}/trustmeimage-{{site.release_tag}}_arm32_raspberrypi2.img.bz2)\\
-[trustmeimage-{{site.release_tag}}_arm64_raspberrypi3-64.img.bz2]({{site.githuborg}}/{{site.repository}}/releases/download/{{site.release_tag}}/trustmeimage-{{site.release_tag}}_arm64_raspberrypi3-64.img.bz2)
+[gyroidosimage-{{site.release_tag}}-raspberrypi2.tar.xz]({{site.githuborg}}/{{site.repository}}/releases/download/{{site.release_tag}}/gyroidosimage-{{site.release_tag}}-raspberrypi2.tar.xz) \\
+[gyroidosimage-{{site.release_tag}}-raspberrypi3-64.tar.xz]({{site.githuborg}}/{{site.repository}}/releases/download/{{site.release_tag}}/gyroidosimage-{{site.release_tag}}-raspberrypi3-64.tar.xz) \\
+[gyroidosimage-{{site.release_tag}}-raspberrypi5.tar.xz]({{site.githuborg}}/{{site.repository}}/releases/download/{{site.release_tag}}/gyroidosimage-{{site.release_tag}}-raspberrypi5.tar.xz)
+
 
 ## Create bootable medium
 
