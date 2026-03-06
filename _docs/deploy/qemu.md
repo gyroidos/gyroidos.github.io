@@ -12,13 +12,8 @@ Before following these steps you need to create the partitioned GyroidOS image a
 or download a released image from Github.
 
 > **Current pre-built release image**: \\
-[gyroidosimage-{{site.release_tag}}-x86_64.tar.xz]({{site.githuborg}}/{{site.repository}}/releases/download/{{site.release_tag}}/gyroidosimage-{{site.release_tag}}-x86_64.tar.xz) \\
+[gyroidosimage-{{site.release_tag}}-x86_64.tar.xz]({{site.githuborg}}/{{site.repository}}/releases/download/{{site.release_tag}}/gyroidosimage-{{site.release_tag}}-x86_64.tar.xz)
 
-
-In first place, you need to install QEMU/KVM and OVMF UEFI.
-> **Note for Ubuntu users:** With the ovmf packet from the Ubuntu
-repositories the GyroidOS image won't start.
-Download the debian buster packet here: [packages.debian.org/buster/all/ovmf/download](https://packages.debian.org/buster/all/ovmf/download) and install it via dpkg.
 
 ```
 apt-get install qemu-kvm ovmf
