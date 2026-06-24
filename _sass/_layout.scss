@@ -781,40 +781,49 @@ img {
 		display: inline;
 	}
 }
-.background-impressum{
-	background: $brand-colour;
-	width: 200%;
-	height: 90px;
-	position: relative;
-	bottom: -26px;
-	z-index: 10;
-   margin: 0 0 0 -600px;
-}
-.impressum-mail{
-   background: $brand-colour;
-   text-align: center;
-   list-style-type: none !important; 
-   border: none;
-   width: 200px;
-   font-size: 20px;
-   box-sizing: border-box;
-   margin: 0.2em 0 0.2em 0;
-   font-weight: 500;
-   color: #000000;
-   transition: all 0.15s;
-   line-height: 1.2;
-   position: relative;
-   z-index: 10;
-   left: 50%;
-   margin: 0 0 0 140px;
-   bottom: -25px;
 
-    display: inline-block;
-@media (min-width: $toc-break) {
-    margin: 0 0 0 400px;
+.background-impressum {
+    background: $brand-colour;
+    width: 100%;
+    height: auto;
+    position: relative;
+    bottom: 0;
+    z-index: 10;
+    margin: 0;              // ← war: margin: 0 0 0 -600px (hacky)
+}
+.impressum-mail {
+    background: $brand-colour;
+    list-style-type: none !important;
+    border: none;
+    width: auto;            // ← war: 200px
+    white-space: nowrap;    // ← neu: eine Zeile auf breiten Screens
+    font-size: 16px;        // ← kleiner für mobile
+    box-sizing: border-box;
+    font-weight: 500;
+    color: #000000;
+    transition: all 0.15s;
+    line-height: 1.5;
+    position: static;       // ← war: relative mit bottom: -25px
+    z-index: 10;
+    text-align: center;
+    padding: 0 10px;
+
+    @media (max-width: $mobile-break) {
+        white-space: normal; // ← Umbruch erlaubt auf sehr kleinen Screens
+        font-size: 13px;
+    }
+
+    @media (min-width: $toc-break) {
+        font-size: 20px;
     }
 }
-footer{
-	background: $brand-colour;
-	height: 80px;
+footer {
+    background: $brand-colour;
+    height: auto;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: flex-end;  // ← rechts ausrichten
+    align-items: center;
 }
+
+
