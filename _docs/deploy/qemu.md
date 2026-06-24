@@ -20,10 +20,10 @@ apt-get install qemu-kvm ovmf
 ```
 Also, an image holding the created containers is needed. Choose the image size large enough to hold the containers you will create.
 ```
-dd if=/dev/zero of=containers.btrfs bs=1M count=<space to be available for containers>
-mkfs.btrfs -L containers containers.btrfs
+dd if=/dev/zero of=containers.ext4 bs=1M count=<space to be available for containers>
+mkfs.ext4 -L containers containers.ext4
 ```
-> When running consecutive tests with different builds make sure you use  a clean "containers.btrfs" image each time!
+> When running consecutive tests with different builds make sure you use  a clean "containers.ext4" image each time!
 
 Now the GyroidOS image can be booted as follows:   
 ```
@@ -31,7 +31,7 @@ kvm -m 4096 -bios OVMF.fd -serial mon:stdio \
     -device virtio-rng-pci \
     -device virtio-scsi-pci,id=scsi \
     -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=tmp/deploy/images/genericx86-64/gyroidos_image/gyroidosimage.img,format=raw \
-    -device scsi-hd,drive=hd1 -drive if=none,id=hd1,file=containers.btrfs,format=raw
+    -device scsi-hd,drive=hd1 -drive if=none,id=hd1,file=containers.ext4,format=raw
 ```
 
 # Use TPM emulation
@@ -64,7 +64,7 @@ kvm -m 4096 -bios OVMF.fd -serial mon:stdio \
     -device virtio-rng-pci \
     -device virtio-scsi-pci,id=scsi \
     -device scsi-hd,drive=hd0 -drive if=none,id=hd0,file=tmp/deploy/images/genericx86-64/gyroidos_image/gyroidosimage.img,format=raw \
-    -device scsi-hd,drive=hd1 -drive if=none,id=hd1,file=containers.btrfs,format=raw \
+    -device scsi-hd,drive=hd1 -drive if=none,id=hd1,file=containers.ext4,format=raw \
     -net nic -net user,hostfwd=tcp::8181-:8181,hostfwd=tcp::2323-:22 \
     -chardev socket,id=chrtpm,path=/tmp/swtpmqemu/swtpm-sock \
     -tpmdev emulator,id=tpm0,chardev=chrtpm \
