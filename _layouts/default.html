@@ -98,7 +98,7 @@
 				</ul>
 			</nav>
 		</header>
-	</body>
+
     <section class="main">
         <div class ="toc">{% include toc.html html=content sanitize=true %}</div>
         <div class="page-header" markdown="1">
@@ -108,11 +108,12 @@
 		</div>
     </section>
     <footer>
-	    <div class="impressum-mail"> gyroidos@aisec.fraunhofer.de </div>
+			<div class="impressum-mail">gyroidos@aisec.fraunhofer.de | <a href="https://www.aisec.fraunhofer.de/en/imprint.html">Imprint</a> | <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">Data Protection</a></div>
     </footer>
     <script>
         document.getElementById("open-nav").addEventListener("click", function () {
             document.body.classList.toggle("nav-open");
         });
     </script>
+	</body>
 </html>
