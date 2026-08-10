@@ -1,0 +1,381 @@
+/* Blue tones derived from gyroidos.github.io (#003566, #3370ab, #cce6ff, #99d4ff) */
+:root {
+  --gy-navy-900: #00264a;
+  --gy-navy-800: #003566;
+  --gy-navy-700: #14528f;
+  --gy-blue-500: #3370ab;
+  --gy-blue-300: #99d4ff;
+  --gy-blue-100: #cce6ff;
+
+  --md-primary-fg-color: var(--gy-navy-800);
+  --md-primary-fg-color--light: var(--gy-blue-500);
+  --md-primary-fg-color--dark: var(--gy-navy-900);
+  --md-accent-fg-color: var(--gy-blue-500);
+}
+
+[data-md-color-scheme="default"] {
+  --md-typeset-a-color: var(--gy-blue-500);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: var(--gy-blue-300);
+  --md-accent-fg-color: var(--gy-blue-300);
+}
+
+/* ============ Header brand ============ */
+/* Larger logo: trim Material's default padding (0.4rem) so the mark
+   grows without making the header taller */
+.md-header__button.md-logo {
+  padding: 0.1rem;
+}
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 1.8rem;
+}
+
+/* "Gyroid" bold, "OS" thin — Material's first header topic is 700 by default */
+.md-header__topic .gy-brand { font-weight: 300; }
+.md-header__topic .gy-brand strong { font-weight: 700; }
+
+/* ============ Header navigation ============ */
+/* Material swaps the nav tabs for the hamburger drawer below 76.25em;
+   keep the tabs down to 45em — they comfortably fit until then */
+@media screen and (min-width: 45em) and (max-width: 76.234375em) {
+  .md-tabs { display: block; }
+  .md-header__button[for="__drawer"] { display: none; }
+  .md-header__button.md-logo { display: block; }
+}
+
+/* ============ Hero ============ */
+.gy-hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-areas:
+    "logo ."
+    "head figure"
+    "text figure";
+  column-gap: 2.5rem;
+  align-items: center;
+  margin: 0.5rem 0 1.5rem;
+  padding: 2.5rem 2.5rem 3rem;
+  border-radius: 0.8rem;
+  color: #fff;
+  /* Abstract node network (docs/assets/network.svg) kept fixed to the viewport
+     while the hero scrolls past — same effect as Material's own landing page */
+  background:
+    radial-gradient(ellipse at 80% 10%, rgba(51, 112, 171, 0.4), transparent 55%),
+    url("../assets/network.svg") center / cover no-repeat,
+    linear-gradient(150deg, var(--gy-navy-900) 0%, var(--gy-navy-800) 55%, var(--gy-navy-700) 100%);
+  background-attachment: scroll, fixed, scroll;
+}
+
+.gy-hero-head { grid-area: head; align-self: end; }
+.gy-hero-text { grid-area: text; align-self: start; }
+/* top-aligned with the text column so both start on the same line */
+.gy-hero-figure { grid-area: figure; align-self: start; }
+
+/* First screen: the hero breaks out of the content column and fills the
+   viewport edge-to-edge — no card box, background fully visible. The boxed
+   sections below only appear on scroll (like Material's own site). */
+@media screen and (min-width: 50em) {
+  html { overflow-x: clip; }
+  .gy-hero {
+    /* 48px header + 48px tabs, plus room for the boxed strip
+       and the scroll arrow below the hero */
+    min-height: calc(100vh - 310px);
+    position: relative;
+    width: 100vw;
+    margin: -2.5rem calc(50% - 50vw) 1.5rem;
+    border-radius: 0;
+    /* keep the hero text aligned with the 61rem content column below */
+    padding-inline: max(2.5rem, calc((100vw - 61rem) / 2 + 0.8rem));
+    /* 1fr spacers keep the block vertically centered; the logo sits in
+       its own row so the figure aligns with the kicker/headline */
+    grid-template-rows: 1fr auto auto auto 1fr;
+    grid-template-areas:
+      ".    ."
+      "logo ."
+      "head figure"
+      "text figure"
+      ".    .";
+  }
+}
+
+/* Bouncing scroll-down arrow, centered below the highlights box */
+.gy-scroll-hint {
+  display: none;
+  width: 28px;
+  margin: -1rem auto 0;
+  color: var(--gy-blue-500);
+}
+.gy-scroll-hint:hover { color: var(--gy-navy-800); }
+[data-md-color-scheme="slate"] .gy-scroll-hint:hover { color: var(--gy-blue-300); }
+@media screen and (min-width: 50em) {
+  .gy-scroll-hint { display: block; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gy-scroll-hint { animation: gy-bounce 2s infinite; }
+}
+@keyframes gy-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(9px); }
+  60% { transform: translateY(5px); }
+}
+
+/* Scroll-reveal: .gy-reveal is added by javascripts/reveal.js, so content
+   is never hidden when JavaScript is unavailable */
+.gy-reveal {
+  opacity: 0;
+  transform: translateY(1.2rem);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.gy-reveal.gy-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.gy-hero h1 {
+  color: #fff;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+.gy-hero .gy-hero-text > p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.gy-hero-logobox { grid-area: logo; align-self: end; }
+.md-typeset .gy-hero-logo {
+  display: block;
+  height: 6rem;
+  width: auto;
+  margin: 0 0 0.6rem;
+}
+
+.gy-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--gy-blue-300) !important;
+  margin-bottom: 0;
+}
+
+.gy-hero .md-button {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.gy-hero .md-button:hover {
+  border-color: #fff;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.gy-hero .md-button--primary {
+  background-color: var(--gy-blue-500);
+  border-color: var(--gy-blue-500);
+}
+.gy-hero .md-button--primary:hover {
+  background-color: var(--gy-navy-700);
+  border-color: var(--gy-navy-700);
+}
+
+/* Hero architecture diagram */
+/* .md-typeset prefix needed to outrank Material's `.md-typeset svg { max-width: 100% }` */
+.md-typeset .gy-diagram {
+  width: 100%;
+  /* Fixed cap so the figure never renders larger on narrow layouts
+     than in the two-column desktop hero */
+  max-width: 360px;
+  display: block;
+  margin: 0 auto;
+  font-family: var(--md-text-font-family, sans-serif);
+}
+.gy-diagram text { font-size: 14px; }
+.gyd-label { fill: #fff; font-weight: 600; }
+.gyd-sublabel { fill: rgba(255, 255, 255, 0.65); font-size: 11px; }
+.gyd-container { fill: rgba(51, 112, 171, 0.4); stroke: var(--gy-blue-300); stroke-width: 1.5; }
+.gyd-core { fill: rgba(255, 255, 255, 0.12); stroke: rgba(255, 255, 255, 0.5); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.gyd-cml { fill: var(--gy-blue-500); }
+.gyd-kernel { fill: rgba(255, 255, 255, 0.1); stroke: rgba(255, 255, 255, 0.3); }
+.gyd-hw { fill: rgba(255, 255, 255, 0.05); stroke: rgba(255, 255, 255, 0.2); }
+
+/* ============ Highlights strip ============ */
+.gy-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 0.8rem;
+  background: var(--gy-blue-100);
+  color: var(--gy-navy-800);
+  font-size: 0.7rem;
+}
+.gy-strip strong { font-size: 0.8rem; }
+.gy-strip p { margin: 0; }
+[data-md-color-scheme="slate"] .gy-strip {
+  background: var(--gy-navy-800);
+  color: #fff;
+}
+
+/* ============ Layout helpers ============ */
+.gy-two-col {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: start;
+}
+.gy-two-col .admonition { margin-top: 0; }
+
+/* Blue-toned info admonition, checkmark list without double bullets */
+.md-typeset .admonition.info { border-color: var(--gy-blue-500); }
+.md-typeset .info > .admonition-title { background-color: rgba(51, 112, 171, 0.1); }
+.md-typeset .info > .admonition-title::before { background-color: var(--gy-blue-500); }
+.gy-two-col .admonition ul { list-style: none; margin-left: 0.2em; }
+.gy-two-col .admonition ul li { margin-left: 0; }
+
+/* Publication / talk cards */
+.md-typeset .gy-pub {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+  padding: 0.9rem 1.1rem;
+  margin: 1rem 0;
+  box-shadow: var(--md-shadow-z1);
+}
+.md-typeset .gy-pub > :first-child { margin-top: 0; }
+.md-typeset .gy-pub > :last-child { margin-bottom: 0; }
+
+.gy-lead {
+  max-width: 38rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.gy-check {
+  color: var(--gy-blue-500);
+}
+
+.gy-contact {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding: 2rem 1.5rem;
+  border-radius: 0.8rem;
+  /* Same fixed network layer as the hero — scrolling reveals another part of it */
+  background:
+    url("../assets/network.svg") center / cover no-repeat,
+    var(--gy-navy-800);
+  background-attachment: fixed, scroll;
+  color: #fff;
+}
+
+/* Full-bleed like the hero: background runs from side to side and
+   meets the footer flush */
+@media screen and (min-width: 50em) {
+  .gy-contact {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    border-radius: 0;
+    padding: 3rem max(1.5rem, calc((100vw - 61rem) / 2 + 0.8rem));
+  }
+  /* the content container's bottom margin would leave a white gap
+     between the banner and the footer */
+  .md-content__inner:has(.gy-contact) { margin-bottom: 0; }
+}
+.gy-contact p { color: #fff; font-size: 0.9rem; }
+.gy-contact .md-button--primary {
+  background-color: var(--gy-blue-500);
+  border-color: var(--gy-blue-500);
+  color: #fff;
+}
+.gy-contact .md-button--primary:hover {
+  background-color: var(--gy-blue-300);
+  border-color: var(--gy-blue-300);
+  color: var(--gy-navy-900);
+}
+
+/* ============ Responsive ============ */
+@media screen and (max-width: 60em) {
+  /* Heading spans both columns so the shrinking figure leaves the text more room */
+  .gy-hero {
+    grid-template-areas:
+      "logo logo"
+      "head head"
+      "text figure";
+  }
+  .gy-two-col { grid-template-columns: 1fr; }
+}
+
+/* 50–60em: full-height hero (spacer rows) combined with the spanning heading.
+   Tighter vertical padding so strip and scroll arrow stay above the fold. */
+@media screen and (min-width: 50em) and (max-width: 60em) {
+  .gy-hero {
+    grid-template-rows: 1fr auto auto auto 1fr;
+    grid-template-areas:
+      ".    ."
+      "logo logo"
+      "head head"
+      "text figure"
+      ".    .";
+    padding-block: 1.5rem 2rem;
+  }
+}
+
+/* Stack the hero into a single column before the text column gets too
+   narrow for the two buttons to share one line (~800px) */
+@media screen and (max-width: 50em) {
+  .gy-hero {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "head"
+      "text"
+      "figure";
+    padding: 1.5rem 1.5rem 2rem;
+  }
+  .gy-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media screen and (max-width: 30em) {
+  .gy-strip { grid-template-columns: 1fr; }
+}
+
+/* background-attachment: fixed is broken on iOS/mobile browsers —
+   let the network scroll with the element there */
+@media (hover: none), (max-width: 50em) {
+  .gy-hero { background-attachment: scroll, scroll, scroll; }
+  .gy-contact { background-attachment: scroll, scroll; }
+}
+
+/* ============ Short-viewport tiers ============
+   Kept at the end of the file so they win the cascade over the base rules */
+
+/* Short viewports (small laptops): compress the first-screen stack so the
+   highlights box and the scroll arrow stay above the fold */
+@media screen and (min-width: 50em) and (max-height: 55em) {
+  /* smaller reserve to match the compressed strip/arrow, so the next
+     section stays below the fold */
+  .gy-hero { padding-block: 1.2rem 1.5rem; margin-bottom: 1rem; min-height: calc(100vh - 240px); }
+  .md-typeset .gy-hero-logo { height: 4.5rem; }
+  .gy-strip { margin-bottom: 0.8rem; padding-block: 0.6rem; }
+  .gy-scroll-hint { margin-top: -0.4rem; }
+}
+
+/* Very short viewports: scale the logo further down and shrink heading,
+   text and diagram */
+@media screen and (min-width: 50em) and (max-height: 53.125em) {
+  .gy-hero { padding-block: 0.8rem 1rem; }
+  .md-typeset .gy-hero-logo { height: 3.25rem; margin-bottom: 0.3rem; }
+  .md-typeset .gy-hero h1 { font-size: 1.5rem; }
+  .gy-hero .gy-hero-text > p { font-size: 0.75rem; }
+}
+
+/* Smallest laptop screens: tightest spacing, logo kept at 2rem */
+@media screen and (min-width: 50em) and (max-height: 48em) {
+  .gy-hero { padding-block: 0.5rem 0.6rem; margin-bottom: 0.6rem; min-height: calc(100vh - 240px); }
+  .md-typeset .gy-hero-logo { height: 2.5rem; margin-bottom: 0.2rem; }
+  .md-typeset .gy-hero h1 { font-size: 1.3rem; }
+  .gy-hero .gy-hero-text > p { font-size: 0.7rem; }
+  .gy-hero .md-button { padding: 0.4em 1.6em; }
+  .gy-strip { padding-block: 0.4rem; margin-bottom: 0.5rem; }
+  .gy-scroll-hint { margin-top: -0.1rem; }
+}
