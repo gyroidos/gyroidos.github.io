@@ -11,7 +11,7 @@ see [gyroidos.io](https://www.gyroidos.io/).
 ## Where to start
 
 - [Architecture](architecture/architecture.md) — system overview, security
-  features, supported platforms and publications
+  features
 - [Quick Build](build/quickbuild.md) — build a GyroidOS image for your target
 - [Deploy on QEMU/KVM](deploy/qemu.md) — try GyroidOS without dedicated hardware
 - [Basic operation](operate/control.md) — manage containers on a running system
