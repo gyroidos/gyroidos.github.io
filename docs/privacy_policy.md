@@ -14,7 +14,7 @@ include all information related to an identified or identifiable natural person.
 ## 1. Name and Contact Information of Controller and Corporate Data Protection Officer
 
 This data protection information applies to data processing on our website
-[gyroidos.github.io](https://gyroidos.github.io) by the controller:
+[gyroidos.io](https://gyroidos.io) by the controller:
 
 Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V.<br>
 Hansastraße 27 c<br>
