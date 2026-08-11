@@ -67,8 +67,8 @@ nav:
       - Rollout: operate/provisioning.md
       - CML Layer SSH Access: operate/cml_ssh.md
       - Remote attestation: operate/rattestation.md
-  - Talks:
-      - EWC 2025: talks/ewc25.md
+  # docs/talks/ewc25.md stays available at /talks/ewc25/ but is intentionally
+  # not linked from the nav — reachable via direct URL only
 
 validation:
   nav:
