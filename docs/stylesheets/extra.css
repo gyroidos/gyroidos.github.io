@@ -1,0 +1,47 @@
+/* Blue tones derived from gyroidos.github.io (#003566, #3370ab, #cce6ff, #99d4ff) */
+:root {
+  --gy-navy-900: #00264a;
+  --gy-navy-800: #003566;
+  --gy-navy-700: #14528f;
+  --gy-blue-500: #3370ab;
+  --gy-blue-300: #99d4ff;
+  --gy-blue-100: #cce6ff;
+
+  --md-primary-fg-color: var(--gy-navy-800);
+  --md-primary-fg-color--light: var(--gy-blue-500);
+  --md-primary-fg-color--dark: var(--gy-navy-900);
+  --md-accent-fg-color: var(--gy-blue-500);
+}
+
+[data-md-color-scheme="default"] {
+  --md-typeset-a-color: var(--gy-blue-500);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: var(--gy-blue-300);
+  --md-accent-fg-color: var(--gy-blue-300);
+}
+
+/* ============ Header brand ============ */
+/* Larger logo: trim Material's default padding (0.4rem) so the mark
+   grows without making the header taller */
+.md-header__button.md-logo {
+  padding: 0.1rem;
+}
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 1.8rem;
+}
+
+/* "Gyroid" bold, "OS" thin — Material's first header topic is 700 by default */
+.md-header__topic .gy-brand { font-weight: 300; }
+.md-header__topic .gy-brand strong { font-weight: 700; }
+
+/* ============ Header navigation ============ */
+/* Material hides nav tabs below 76.25em. Keep them shown down to 45em so
+   users can still jump between top-level sections — the hamburger drawer
+   stays visible so sub-page nav (sidebar in a drawer) remains reachable */
+@media screen and (min-width: 45em) and (max-width: 76.234375em) {
+  .md-tabs { display: block; }
+  .md-header__button.md-logo { display: block; }
+}

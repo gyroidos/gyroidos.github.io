@@ -1,0 +1,104 @@
+site_name: GyroidOS
+site_url: https://gyroidos.github.io/
+site_description: >-
+  Documentation for GyroidOS — a multi-arch, open-source OS-level virtualization
+  solution with a focus on platform security based on hardware features.
+
+repo_url: https://github.com/gyroidos
+repo_name: gyroidos
+
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/gyroidos-logo.svg
+  favicon: assets/gyroidos-logo-small.png
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - content.code.copy
+
+nav:
+  - Overview: index.md
+  - General:
+      - Secure Boot: architecture/secure_boot.md
+      - Measured Boot: architecture/measured_boot.md
+      - Storage Encryption: architecture/storage_encryption.md
+      - PKI: pki.md
+      - Certification: certification.md
+      - Background: background.md
+  - Build:
+      - Quick Build: build/quickbuild.md
+      - Setup Host: build/setup_host.md
+      - Base System: build/build.md
+  - Deploy:
+      - QEMU/KVM: deploy/qemu.md
+      - x86 Devices: deploy/x86.md
+      - "RISC-V: BeagleV-Fire": deploy/beaglev-fire.md
+      - "ARM: rpi": deploy/rpi.md
+      - "ARM: TQMa8MPxL": deploy/tqma8mpxl.md
+      - Hosted Mode: deploy/hosted.md
+  - Operate:
+      - Basic operation: operate/control.md
+      - Container configuration: operate/container_config.md
+      - GuestOS configuration: operate/guestos_config.md
+      - Examples: operate/examples.md
+      - Rollout: operate/provisioning.md
+      - CML Layer SSH Access: operate/cml_ssh.md
+      - Remote attestation: operate/rattestation.md
+  - Talks:
+      - EWC 2025: talks/ewc25.md
+
+validation:
+  nav:
+    omitted_files: ignore
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/gyroidos
+      name: GyroidOS on GitHub
+    - icon: fontawesome/solid/envelope
+      link: mailto:gyroidos@aisec.fraunhofer.de
+      name: Contact the team
+
+copyright: >-
+  Developed at Fraunhofer AISEC &middot; Open source under GPL-2.0
