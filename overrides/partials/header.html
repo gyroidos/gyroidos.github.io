@@ -60,6 +60,9 @@
         {% include "partials/search.html" %}
       {% endif %}
     {% endif %}
+    <a class="md-header__button md-icon" href="https://github.com/gyroidos/gyroidos/releases/latest" title="Latest release" aria-label="Latest release" target="_blank" rel="noopener">
+      {% include ".icons/octicons/package-24.svg" %}
+    </a>
     {% if config.repo_url %}
       <div class="md-header__source">
         {% include "partials/source.html" %}
