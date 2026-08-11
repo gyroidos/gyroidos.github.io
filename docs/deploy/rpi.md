@@ -1,14 +1,14 @@
 ---
-title: ARM: rpi
+title: "ARM: rpi"
 ---
 
 
 # Deploy GyroidOS on Raspberry Pi platforms
 This section describes how to deploy GyroidOS on Raspberry Pi platforms.
 
-> **Current pre-built release image**: \\
-[gyroidosimage-v1.1-raspberrypi2.tar.xz](https://github.com/gyroidos/gyroidos/releases/download/v1.1/gyroidosimage-v1.1-raspberrypi2.tar.xz) \\
-[gyroidosimage-v1.1-raspberrypi3-64.tar.xz](https://github.com/gyroidos/gyroidos/releases/download/v1.1/gyroidosimage-v1.1-raspberrypi3-64.tar.xz) \\
+> **Current pre-built release image**:  
+[gyroidosimage-v1.1-raspberrypi2.tar.xz](https://github.com/gyroidos/gyroidos/releases/download/v1.1/gyroidosimage-v1.1-raspberrypi2.tar.xz)  
+[gyroidosimage-v1.1-raspberrypi3-64.tar.xz](https://github.com/gyroidos/gyroidos/releases/download/v1.1/gyroidosimage-v1.1-raspberrypi3-64.tar.xz)  
 [gyroidosimage-v1.1-raspberrypi5.tar.xz](https://github.com/gyroidos/gyroidos/releases/download/v1.1/gyroidosimage-v1.1-raspberrypi5.tar.xz)
 
 

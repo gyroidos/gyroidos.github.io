@@ -1,12 +1,12 @@
 ---
-title: RISC-V: BeagleV-Fire
+title: "RISC-V: BeagleV-Fire"
 ---
 
 
 # Deploy GyroidOS on BeagleV-Fire
 This section describes how to deploy GyroidOS on the BeagleV-Fire board.
 
-> **Current pre-built release image**: \\
+> **Current pre-built release image**:  
 [gyroidosimage-v1.1-beaglev-fire.tar.xz](https://github.com/gyroidos/gyroidos/releases/download/v1.1/gyroidosimage-v1.1-beaglev-fire.tar.xz)
 
 

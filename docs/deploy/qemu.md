@@ -5,10 +5,10 @@ title: QEMU/KVM
 
 
 # Run GyroidOS image in QEMU/KVM (x86-64)
-Before following these steps you need to create the partitioned GyroidOS image as described in [Build](../build/build.md)  
-or download a released image from Github.
+Before following these steps you need to create the partitioned GyroidOS
+image as described in [Build](../build/build.md) or download a released image from Github.
 
-> **Current pre-built release image**: \\
+> **Current pre-built release image**:  
 [gyroidosimage-v1.1-x86_64.tar.xz](https://github.com/gyroidos/gyroidos/releases/download/v1.1/gyroidosimage-v1.1-x86_64.tar.xz)
 
 
