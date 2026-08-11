@@ -39,8 +39,9 @@ theme:
     - content.code.copy
 
 nav:
-  - Overview: index.md
+  - Home: index.md
   - General:
+      - Architecture: architecture/architecture.md
       - Secure Boot: architecture/secure_boot.md
       - Measured Boot: architecture/measured_boot.md
       - Storage Encryption: architecture/storage_encryption.md
