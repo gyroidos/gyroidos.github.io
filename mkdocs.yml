@@ -1,4 +1,4 @@
-site_name: GyroidOS
+site_name: GyroidOS Docs
 site_url: https://gyroidos.github.io/
 site_description: >-
   Documentation for GyroidOS — a multi-arch, open-source OS-level virtualization
@@ -102,4 +102,4 @@ extra:
       name: Contact the team
 
 copyright: >-
-  Developed at Fraunhofer AISEC &middot; Open source under GPL-2.0
+  Copyright &copy; 2026 Fraunhofer AISEC
