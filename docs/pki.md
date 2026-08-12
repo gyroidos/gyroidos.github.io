@@ -5,7 +5,7 @@ title: PKI
 
 
 # Overview of the GyroidOS PKI solution
-![gyroidos pki architecture](img/pki_trustm3.png){ width="55%" }
+![gyroidos pki architecture](img/pki_trustm3.svg){ .gy-card width="55%" }
 
 In order to sign all GyroidOS software artifacts and to provide device identities (e.g., for secure remote
 management), GyroidOS proposes a PKI solution that can be tailored to the requirements of a spefic

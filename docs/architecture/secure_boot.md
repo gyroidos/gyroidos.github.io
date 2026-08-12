@@ -6,7 +6,7 @@ title: Secure Boot
 # GyroidOS Secure Boot
 
 <br>
-![CML secure and measured boot GyroidOS](../img/secure_measured_boot_impl_cml-crop.png "Secure and Measured Boot in GyroidOS")
+![CML secure and measured boot GyroidOS](../img/secure_measured_boot_impl_cml.svg "Secure and Measured Boot in GyroidOS"){ .gy-card }
 <br>
 
 

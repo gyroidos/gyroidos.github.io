@@ -5,7 +5,7 @@ title: Measured Boot
 
 # Measured Boot and Attestation
 
-![secure and measured boot](../img/secure_measured_boot_impl_cml-crop.png "GyroidOS Secure and Measured Boot")
+![secure and measured boot](../img/secure_measured_boot_impl_cml.svg "GyroidOS Secure and Measured Boot"){ .gy-card }
 
 The lower part of the figure above shows the "Measured Boot" procedure with the subsequent attestation of the system state at runtime in comparison to the system state at start towards third parties.
 Similarly to the Secure Boot process, the next layer of software is always measured, starting from the initial layer.

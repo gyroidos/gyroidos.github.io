@@ -23,7 +23,7 @@ No password is necessary, therefore the decryption is coupled to the state of th
 ### Implementation for the K<sub>FDE</sub>
 
 <br>
-![CML storage encryption](../img/fde-crop.png "Full Disk Ecncryption for CML in GyroidOS")
+![CML storage encryption](../img/fde.svg "Full Disk Ecncryption for CML in GyroidOS"){ .gy-card }
 <br>
 
 On the left side, the figure above shows how the K<sub>FDE</sub> (FDE\_key) is created and bound to the TPM. 
