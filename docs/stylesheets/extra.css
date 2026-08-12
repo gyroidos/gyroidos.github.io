@@ -51,6 +51,8 @@
    stay readable when the site is viewed in dark mode. In light mode the
    card is white-on-white and effectively invisible. */
 .md-typeset img.gy-card {
+  box-sizing: border-box;
+  max-width: 100%;
   background: #ffffff;
   padding: 0.6rem 0.8rem;
   border-radius: 0.4rem;
@@ -59,4 +61,10 @@
 [data-md-color-scheme="slate"] .md-typeset img.gy-card {
   /* Slight shadow for depth against the slate background */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+/* On smaller screens, drop any percentage width from the markdown and use
+   the full text column instead — the diagrams are wide by nature and get
+   hard to read once scaled below their designed size */
+@media screen and (max-width: 60em) {
+  .md-typeset img.gy-card { width: 100% !important; }
 }
