@@ -41,7 +41,6 @@ PCR11 is used by the virtualization layer to store a measurement list ML<sub>OS<
 |8-15| Defined for use by the Static OS
 |16| Debug
 |23| ApplicationSupport
-|--------------|---------------------------|
 
 
 ## Attestation Protocol
