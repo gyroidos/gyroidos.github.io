@@ -33,9 +33,12 @@
   height: 1.8rem;
 }
 
-/* "Gyroid" bold, "OS" thin — Material's first header topic is 700 by default */
-.md-header__topic .gy-brand { font-weight: 300; }
-.md-header__topic .gy-brand strong { font-weight: 700; }
+/* "Gyroid" bold, "OS" thin — applied in the header topics and inside the
+   hamburger drawer title */
+.md-header__topic .gy-brand,
+.md-nav__title .gy-brand { font-weight: 300; }
+.md-header__topic .gy-brand strong,
+.md-nav__title .gy-brand strong { font-weight: 700; }
 
 /* ============ Header navigation ============ */
 /* Material hides nav tabs below 76.25em. Keep them shown down to 45em so
