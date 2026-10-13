@@ -9,6 +9,8 @@ repo_name: gyroidos
 
 theme:
   name: material
+  static_templates:
+   - 404.html
   # Extends the footer copyright line with Imprint and Privacy Policy links
   custom_dir: overrides
   logo: assets/gyroidos-logo.svg
