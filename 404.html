@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to GyroidOS Docs...</title>
+  <script>
+    var currentPath = window.location.pathname;
+
+    // 1. Loop Guard: If they are already inside /docs/ and hit a 404,
+    // do not append /docs/ again. Send them straight to the docs home page.
+    if (currentPath.startsWith("/docs/")) {
+      window.location.replace("https://www.gyroidos.io");
+    } else {
+      // 2. Path Expansion: If they come from the landing root (e.g., /pki),
+      // rewrite it dynamically to point to the documentation subdirectory (e.g., /docs/pki)
+      var newDestination = "https://www.gyroidos.io/docs" + currentPath;
+      window.location.replace(newDestination);
+    }
+  </script>
+</head>
+<body>
+  <p style="font-family: sans-serif; text-align: center; margin-top: 50px;">
+    Redirecting to GyroidOS Documentation Hub...
+  </p>
+</body>
+</html>
