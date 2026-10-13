@@ -47,7 +47,7 @@ nav:
   - Platforms: "/#supported-platforms"
   - Get Started: "/#get-started-in-three-steps"
   - Resources: "/#resources"
-  - Documentation: https://gyroidos.github.io/
+  - Documentation: https://gyroidos.io/docs
 
 # Intentional nav layout, silence the corresponding notices:
 # - the tabs link to sections of the landing page via absolute anchors (/#...)

@@ -130,8 +130,8 @@ containers — anchored in hardware security features from the very first boot s
 
     A complete chain of trust — from bootloader through kernel and signed kernel
     modules to containers — can be verified via
-    [secure boot](https://gyroidos.github.io/architecture/secure_boot/) and recorded via
-    [measured boot](https://gyroidos.github.io/architecture/measured_boot/) with
+    [secure boot](https://gyroidos.io/docs/architecture/secure_boot/) and recorded via
+    [measured boot](https://gyroidos.io/docs/architecture/measured_boot/) with
     TPM-based remote attestation.
 
 -   :material-harddisk:{ .lg .middle } __Encrypted storage__
@@ -139,16 +139,16 @@ containers — anchored in hardware security features from the very first boot s
     ---
 
     Container data volumes are protected with
-    [storage encryption](https://gyroidos.github.io/architecture/storage_encryption/),
+    [storage encryption](https://gyroidos.io/docs/architecture/storage_encryption/),
     with keys bound to the platform's hardware trust anchor.
 
 -   :material-certificate-outline:{ .lg .middle } __PKI & remote management__
 
     ---
 
-    A project-owned [PKI](https://gyroidos.github.io/pki/) underpins signed guest OS
+    A project-owned [PKI](https://gyroidos.io/docs/pki/) underpins signed guest OS
     images, device provisioning and flexible
-    [remote management](https://gyroidos.github.io/operate/control/) of containers
+    [remote management](https://gyroidos.io/docs/operate/control/) of containers
     in the field.
 
 </div>
@@ -213,37 +213,37 @@ deployment guides exist for:
 
     UEFI secure boot &middot; TPM 2.0
 
-    [:octicons-arrow-right-24: x86 guide](https://gyroidos.github.io/deploy/x86/)
+    [:octicons-arrow-right-24: x86 guide](https://gyroidos.io/docs/deploy/x86/)
 
 -   __Raspberry Pi__
 
     32- and 64-bit deployment guides
 
-    [:octicons-arrow-right-24: Raspberry Pi guide](https://gyroidos.github.io/deploy/rpi/)
+    [:octicons-arrow-right-24: Raspberry Pi guide](https://gyroidos.io/docs/deploy/rpi/)
 
 -   __NXP i.MX8 (TQMa8MPxL)__
 
     Industrial-grade module with HAB secure boot
 
-    [:octicons-arrow-right-24: i.MX8 guide](https://gyroidos.github.io/deploy/tqma8mpxl/)
+    [:octicons-arrow-right-24: i.MX8 guide](https://gyroidos.io/docs/deploy/tqma8mpxl/)
 
 -   __BeagleV-Fire (RISC-V)__
 
     PolarFire SoC FPGA board
 
-    [:octicons-arrow-right-24: BeagleV-Fire guide](https://gyroidos.github.io/deploy/beaglev-fire/)
+    [:octicons-arrow-right-24: BeagleV-Fire guide](https://gyroidos.io/docs/deploy/beaglev-fire/)
 
 -   __QEMU / KVM__
 
     Try GyroidOS without dedicated hardware
 
-    [:octicons-arrow-right-24: QEMU guide](https://gyroidos.github.io/deploy/qemu/)
+    [:octicons-arrow-right-24: QEMU guide](https://gyroidos.io/docs/deploy/qemu/)
 
 -   __Hosted mode__
 
     Run the CML on an existing Linux distribution
 
-    [:octicons-arrow-right-24: Hosted mode guide](https://gyroidos.github.io/deploy/hosted/)
+    [:octicons-arrow-right-24: Hosted mode guide](https://gyroidos.io/docs/deploy/hosted/)
 
 </div>
 
@@ -257,7 +257,7 @@ deployment guides exist for:
 
     Prepare your build machine with the required tools for Yocto-based builds.
 
-    [:octicons-arrow-right-24: Host setup](https://gyroidos.github.io/build/setup_host/)
+    [:octicons-arrow-right-24: Host setup](https://gyroidos.io/docs/build/setup_host/)
 
 -   :material-numeric-2-circle:{ .lg .middle } __Build an image__
 
@@ -265,7 +265,7 @@ deployment guides exist for:
 
     Use the quick-build workflow to create a complete GyroidOS image for your target.
 
-    [:octicons-arrow-right-24: Quick build](https://gyroidos.github.io/build/quickbuild/)
+    [:octicons-arrow-right-24: Quick build](https://gyroidos.io/docs/build/quickbuild/)
 
 -   :material-numeric-3-circle:{ .lg .middle } __Deploy & operate__
 
@@ -274,7 +274,7 @@ deployment guides exist for:
     Boot the image in QEMU or on real hardware and manage containers with the
     control interface.
 
-    [:octicons-arrow-right-24: Deploy to QEMU](https://gyroidos.github.io/deploy/qemu/)
+    [:octicons-arrow-right-24: Deploy to QEMU](https://gyroidos.io/docs/deploy/qemu/)
 
 </div>
 
@@ -288,7 +288,7 @@ deployment guides exist for:
 
     Architecture, build, deployment and operation guides.
 
-    [:octicons-arrow-right-24: Read the docs](https://gyroidos.github.io/)
+    [:octicons-arrow-right-24: Read the docs](https://gyroidos.io/docs/)
 
 -   :material-github:{ .lg .middle } __Source code__
 
@@ -304,7 +304,7 @@ deployment guides exist for:
 
     How GyroidOS supports Common Criteria and IEC 62443 processes.
 
-    [:octicons-arrow-right-24: Certification](https://gyroidos.github.io/certification/)
+    [:octicons-arrow-right-24: Certification](https://gyroidos.io/docs/certification/)
 
 -   :material-presentation:{ .lg .middle } __Talks & publications__
 
