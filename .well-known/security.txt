@@ -1,0 +1,4 @@
+Contact: mailto:security@gyroidos.io
+Expires: 2027-10-21T08:28:41.000Z
+Preferred-Languages: en, de
+Canonical: https://www.gyroidos.io/.well-known/security.txt
