@@ -7,6 +7,11 @@ site_description: >-
 repo_url: https://github.com/gyroidos
 repo_name: gyroidos
 
+# MkDocs skips dot-directories by default; re-include .well-known so
+# security.txt is deployed at /.well-known/security.txt (RFC 9116)
+exclude_docs: |
+  !/.well-known/
+
 theme:
   name: material
   static_templates:
