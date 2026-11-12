@@ -58,8 +58,8 @@ nav:
 
 # Intentional nav layout, silence the corresponding notices:
 # - the tabs link to sections of the landing page via absolute anchors (/#...)
-# - privacy_policy.md and publications.md are reached through in-page links,
-#   not through the nav
+# - imprint.md, privacy_policy.md and publications.md are reached through
+#   in-page links, not through the nav
 validation:
   nav:
     absolute_links: ignore
